@@ -1,0 +1,38 @@
+/*-------------------------------------------------------------------------------------------------
+ | inkling is a reset, default, and opinionated/suggestive stylesheet for rapid interface
+ | development.  Please note, this stylesheet does not like IE6.  While you may get away with it
+ | using something like IE7.js, it is suggested you just let it die.
+ |
+ |
+ | @author Matthew J. Sahagian [mjs] <gent@dotink.org>
+ | @copyright Copyright (c) 2011, Matthew J. Sahagian
+ | @license http://www.gnu.org/licenses/agpl.html GNU Affero General Public License
+ |
+ | @package inkling
+ *-----------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------------
+ | Copy and paste this comment for easy block comments
+ *-----------------------------------------------------------------------------------------------*/
+
+@import url('reset.css');
+@import url('styles/base.css');
+@import url('styles/headings.css');
+@import url('styles/forms.css');
+@import url('styles/messages.css');
+
+@import url('structure/base.css');
+@import url('structure/responsive.css');
+@import url('structure/messages.css');
+
+@font-face {
+	font-family: 'icon';
+	src: url('font/typicons.eot?47914900');
+	src:
+		url('font/typicons.eot?47914900#iefix') format('embedded-opentype'),
+		url('font/typicons.woff?47914900') format('woff'),
+		url('font/typicons.ttf?47914900') format('truetype'),
+		url('font/typicons.svg?47914900#entypo') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

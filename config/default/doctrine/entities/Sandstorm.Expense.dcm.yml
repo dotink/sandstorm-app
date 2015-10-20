@@ -1,0 +1,54 @@
+Sandstorm\Expense:
+  type: entity
+  table: expenses
+  repositoryClass: Sandstorm\Expenses
+
+  id:
+    id:
+      column: id
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    description:
+      column: description
+      type: string
+    dateReported:
+      column: date_reported
+      type: date
+    amount:
+      column: amount
+      type: float
+    closed:
+      column: closed
+      type: boolean
+
+  manyToOne:
+    action:
+      targetEntity: Sandstorm\Action
+      inversedBy: costs
+      joinColumn:
+        name: action
+        referencedColumnName: id
+        onDelete: RESTRICT
+
+    account:
+      targetEntity: Sandstorm\Account
+      inversedBy: expenses
+      joinColumn:
+        name: account
+        referencedColumnName: id
+        onDelete: CASCADE
+
+    organizer:
+      targetEntity: Sandstorm\Person
+      joinColumn:
+        name: organizer
+        referencedColumnName: id
+        onDelete: RESTRICT
+
+  oneToMany:
+    payments:
+      targetEntity: Sandstorm\Payment
+      mappedBy: expense

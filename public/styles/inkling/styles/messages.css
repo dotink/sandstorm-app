@@ -1,0 +1,50 @@
+.message {
+	padding: 2rem;
+	box-sizing: border-box;
+	border: solid 2px;
+	color: #666;
+}
+
+.message > * {
+	margin-left: 5rem;
+}
+
+.message::before {
+	margin: -1rem 2rem 2rem 0;
+	font-family: icon;
+	font-size: 4rem;
+	float: left;
+	content: '\e091';
+}
+
+.error {
+	color: #631f2b;
+}
+
+.error::before {
+	content: '\e058';
+}
+
+.warning {
+	color: #8b4f00;
+}
+
+.warning::before {
+	content: '\e03d';
+}
+
+.success {
+	color: #245c44;
+}
+
+.success::before {
+	content: '\e11e';
+}
+
+.notice {
+	color: #325865;
+}
+
+.notice::before {
+	content: '\e0b8';
+}

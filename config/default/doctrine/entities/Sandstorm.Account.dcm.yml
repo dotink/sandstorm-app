@@ -1,0 +1,33 @@
+Sandstorm\Account:
+  type: entity
+  table: accounts
+  repositoryClass: Sandstorm\Accounts
+
+  id:
+    id:
+      type: string
+      generator:
+        strategy: UUID
+
+  fields:
+    name:
+      column: name
+      type: string
+
+  manyToOne:
+    organization:
+      targetEntity: Sandstorm\Organization
+      inversedBy: accounts
+      joinColumn:
+        name: organization
+        referencedColumnName: id
+        onDelete: RESTRICT
+
+  oneToMany:
+    deposits:
+      targetEntity: Sandstorm\Deposit
+      mappedBy: account
+
+    expenses:
+      targetEntity: Sandstorm\Expense
+      mappedBy: account

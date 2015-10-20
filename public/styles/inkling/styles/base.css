@@ -1,0 +1,39 @@
+html {
+	font-size: 10px;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: sans-serif;
+}
+
+body > *,
+body > * > .billboard {
+	padding: 4rem 0;
+}
+
+body > * > .billboard:not(:last-child) {
+	margin-bottom: 2rem;
+}
+
+p, ul, ol, blockquote, pre {
+	line-height: 1.5em;
+	margin: 0 0 2rem 0;
+}
+
+pre {
+	line-height: 1.25em;
+}
+
+ul > li::before {
+	content: '\e049';
+	font-family: icon;
+	font-size: .75em;
+	padding: 0 1rem 0 0;
+	vertical-align: top;
+}
+
+div > :last-child {
+	margin-bottom: 0;
+	margin-right: 0;
+}

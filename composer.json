@@ -23,7 +23,12 @@
 		"rdlowrey/auryn": "dev-master",
 		"dotink/affinity": "dev-master",
 		"dotink/inkwell-core": "dev-master",
-		"vlucas/phpdotenv": "~2.0.0"
+		"vlucas/phpdotenv": "~2.0.0",
+		"dotink/inkwell-components": "dev-master",
+		"dotink/inkwell-doctrine": "dev-master",
+		"twilio/sdk": "dev-master",
+		"dotink/inkwell-auth": "dev-master",
+		"dotink/inkwell-relay": "dev-master"
 	},
 	"autoload": {
 		"classmap": ["user/"]

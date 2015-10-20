@@ -1,0 +1,15 @@
+Sandstorm\ActionType:
+  type: entity
+  table: action_types
+  repositoryClass: Sandstorm\ActionTypes
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string

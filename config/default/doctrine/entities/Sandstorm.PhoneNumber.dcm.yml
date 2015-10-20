@@ -1,0 +1,31 @@
+Sandstorm\PhoneNumber:
+  type: entity
+  table: phone_numbers
+  repositoryClass: Sandstorm\PhoneNumbers
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    digits:
+      column: digits
+      type: string
+    loginPhrase:
+      column: login_phrase
+      type: string
+      nullable: true
+    type:
+      column: type
+      type: string
+
+  manyToOne:
+    person:
+      targetEntity: Sandstorm\Person
+      inversedBy: phoneNumbers
+      joinColumn:
+        name: person
+        referencedColumnName: id
+        onDelete: CASCADE

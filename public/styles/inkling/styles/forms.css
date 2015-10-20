@@ -1,0 +1,8 @@
+button,
+a.action {
+	padding: .5rem 2rem;
+	background-color: #666;
+	font-weight: bold;
+	color: #fff;
+	border: 0;
+}

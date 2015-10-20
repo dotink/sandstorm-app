@@ -1,0 +1,15 @@
+@import url('forms.css');
+
+html {
+	text-align: center;
+	background: #222;
+}
+
+body > section {
+	background: #fff;
+}
+
+
+.alt {
+	font-size: 1.2rem;
+}

@@ -1,0 +1,15 @@
+Sandstorm\PersonType:
+  type: entity
+  table: person_types
+  repositoryClass: Sandstorm\PersonTypes
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string

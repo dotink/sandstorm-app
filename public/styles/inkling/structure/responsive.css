@@ -1,0 +1,101 @@
+@media (max-width: 6400px) {
+	html {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 3200px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 2400px) {
+	html {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 1600px) {
+	html {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 1440px) {
+	html {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 1366px) {
+	.group.featurette > * {
+		width: auto;
+		margin-left: 0;
+	}
+
+	.set.featurette > * {
+		display: block;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 2rem;
+	}
+
+	.set.featurette > hr {
+		width: auto;
+		height: 1px;
+	}
+}
+
+@media (max-width: 1280px) {
+	.group.brochure > * {
+		width: auto;
+		margin-left: 0;
+	}
+
+	.set.brochure > * {
+		display: block;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 2rem;
+	}
+
+	.set.brochure > hr {
+		width: auto;
+		height: 1px;
+	}
+}
+
+@media (max-width: 1152px) {
+	.group.catalogue > * {
+		width: auto;
+		margin-left: 0;
+	}
+
+	.set.catalogue > * {
+		display: block;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 2rem;
+	}
+
+	.set.catalogue > hr {
+		width: auto;
+		height: 1px;
+	}
+}
+
+@media (max-width: 640px) {
+	.set > * {
+		display: block;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 2rem;
+	}
+
+	.set > hr {
+		display: block;
+		width: auto;
+		height: 1px;
+	}
+}

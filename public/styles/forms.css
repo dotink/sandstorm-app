@@ -1,0 +1,32 @@
+
+
+label {
+	display: block;
+	text-align: center;
+	line-height: 2em;
+	margin-bottom: 2rem;
+}
+
+input {
+	width: 100%;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 1rem;
+	font-size: 1.4rem;
+	text-align: center;
+	font-weight: bold;
+}
+
+button, a.action {
+	box-sizing: border-box;
+	font-weight: normal;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 2rem;
+	padding: 1rem 2rem;
+	background: transparent;
+	color: #222;
+	border: solid 2px;
+	cursor: pointer;
+}

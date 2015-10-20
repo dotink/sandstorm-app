@@ -1,0 +1,48 @@
+Sandstorm\Location:
+  type: entity
+  table: locations
+  repositoryClass: Sandstorm\Locations
+
+  id:
+    id:
+      column: id
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string
+    addressLine1:
+      column: address_line_1
+      type: string
+      nullable: true
+    addressLine2:
+      column: address_line_2
+      type: string
+      nullable: true
+    city:
+      column: city
+      type: string
+      nullable: true
+    state:
+      column: state
+      type: string
+      nullable: true
+    postalCode:
+      column: postal_code
+      type: string
+      nullable: true
+    longitude:
+      column: longitude
+      type: float
+      nullable: true
+    latitude:
+      column: latitude
+      type: float
+      nullable: true
+    capacity:
+      column: capacity
+      type: integer
+      nullable: true

@@ -1,0 +1,62 @@
+Sandstorm\Action:
+  type: entity
+  table: actions
+  repositoryClass: Sandstorm\Actions
+
+  id:
+    id:
+      column: id
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string
+    description:
+      column: description
+      type: string
+
+  manyToOne:
+    type:
+      targetEntity: Sandstorm\ActionType
+      joinColumn:
+        name: type
+        referencedColumnName: id
+        onDelete: SET NULL
+
+    leader:
+      targetEntity: Sandstorm\Person
+      joinColumn:
+        name: leader
+        referencedColumnName: id
+        onDelete: SET NULL
+
+    location:
+      targetEntity: Sandstorm\Location
+      joinColumn:
+        name: location
+        referencedColumnName: id
+        onDelete: SET NULL
+
+  manyToMany:
+    volunteers:
+      targetEntity: Sandstorm\Person
+      joinTable:
+        name: volunteers
+        joinColumns:
+          action:
+            referencedColumnName: id
+        inverseJoinColumns:
+          person:
+            referencedColumnName: id
+
+  oneToMany:
+    contributions:
+      targetEntity: Sandstorm\Deposit
+      mappedBy: action
+
+    costs:
+      targetEntity: Sandstorm\Expense
+      mappedBy: action

@@ -1,0 +1,86 @@
+Sandstorm\Person:
+  type: entity
+  table: people
+  repositoryClass: Sandstorm\People
+
+  id:
+    id:
+      column: id
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string
+    nickName:
+      column: nick_name
+      type: string
+    addressLine1:
+      column: address_line_1
+      type: string
+      nullable: true
+    addressLine2:
+      column: address_line_2
+      type: string
+      nullable: true
+    city:
+      column: city
+      type: string
+      nullable: true
+    state:
+      column: state
+      type: string
+      nullable: true
+    postalCode:
+      column: postal_code
+      type: string
+      nullable: true
+    longitude:
+      column: longitude
+      type: float
+      nullable: true
+    latitude:
+      column: latitude
+      type: float
+      nullable: true
+    dateJoined:
+      column: date_joined
+      type: date
+
+  oneToMany:
+    organizations:
+      targetEntity: Sandstorm\Organization
+      mappedBy: owner
+
+  manyToMany:
+    roles:
+      targetEntity: Sandstorm\PersonType
+      joinTable:
+        name: roles
+        joinColumns:
+          type:
+            referencedColumnName: id
+        inverseJoinColumns:
+          person:
+            referencedColumnName: id
+
+    interests:
+      targetEntity: Sandstorm\ActionType
+      joinTable:
+        name: interests
+        joinColumns:
+          person:
+            referencedColumnName: id
+        inverseJoinColumns:
+          interest:
+            referencedColumnName: id
+
+  oneToOne:
+    primaryPhoneNumber:
+      targetEntity: Sandstorm\PhoneNumber
+      joinColumn:
+        name: primary_phone_number
+        referencedColumnName: id
+        onDelete: SET NULL

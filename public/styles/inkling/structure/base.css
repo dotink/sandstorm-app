@@ -1,0 +1,130 @@
+body > *       > .billboard > *,
+body > header  > :not(.billboard),
+body > article > :not(.billboard),
+body > section > :not(.billboard),
+body > footer  > :not(.billboard) {
+	display: block;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70%;
+}
+
+.set,
+.group {
+	margin: 2rem 0;
+}
+
+h1 + .set,
+h2 + .set,
+h3 + .set,
+h4 + .set,
+h5 + .set,
+h6 + .set,
+h1 + .group,
+h2 + .group,
+h3 + .group,
+h4 + .group,
+h5 + .group,
+h6 + .group {
+	margin-top: 0;
+}
+
+.set {
+	display: table;
+	table-layout: fixed;
+}
+
+.set > * {
+	display: table-cell;
+	vertical-align: top;
+	padding-right: 2rem;
+	padding-left: 2rem;
+}
+
+.set > hr {
+	display: table-cell;
+	background-color: #666;
+	border-collapse: collapse;
+	border-spacing: 0;
+	padding-right: 0;
+	padding-left: 0;
+	border: 0;
+	width: 1px;
+}
+
+.set > :last-child {
+	padding-right: 0;
+}
+
+.set > :first-child {
+	padding-left: 0;
+}
+
+
+.group:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.group > * {
+	float: left;
+	margin: 0 0 2rem 4rem;
+}
+
+.group.container {
+	overflow: hidden;
+}
+
+.group.container > * {
+	margin-bottom: -100rem;
+	box-sizing: border-box;
+	padding: 2rem;
+}
+
+.group.container > *:after {
+	display: block;
+	height: 100rem;
+	content: ' ';
+}
+
+
+/*
+ * Featurettes
+ */
+.group.featurette > * {
+	width: calc(50% - 4rem + (4rem / 2));
+}
+
+.group.featurette > :nth-child(2n+1) {
+	margin-left: 0;
+	clear: left;
+}
+
+
+/*
+ * Brochure
+ */
+.group.brochure > * {
+	width: calc(33.3334% - 4rem + (4rem / 3));
+}
+
+.group.brochure > :nth-child(3n+1) {
+	margin-left: 0;
+	clear: left;
+}
+
+
+/*
+ * Catalogues
+ */
+.group.catalogue > * {
+	width: calc(25% - 4rem + (4rem / 4));
+}
+
+.group.catalogue > :nth-child(4n+1) {
+	margin-left: 0;
+	clear: left;
+}

@@ -1,0 +1,40 @@
+Sandstorm\Organization:
+  type: entity
+  table: organizations
+  repositoryClass: Sandstorm\Organizations
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string
+    description:
+      column: description
+      type: text
+
+  manyToOne:
+    owner:
+      targetEntity: Sandstorm\Person
+      inversedBy: organizations
+      joinColumn:
+        name: owner
+        referencedColumnName: id
+        onDelete: SET NULL
+
+  oneToMany:
+    phoneNumbers:
+      targetEntity: Sandstorm\PhoneNumber
+      mappedBy: organization
+
+  oneToOne:
+    primaryAccount:
+      targetEntity: Sandstorm\Account
+      joinColumn:
+        name: primary_account
+        referencedColumnName: id
+        onDelete: SET NULL

@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+	<head>
+		<title>inKLing - Give Your Stylesheets a Clue</title>
+		<link href="inkling.css" rel="stylesheet" />
+		<!-- <link href="themes/default.css" rel="stylesheet" /> -->
+
+		<style>
+			.container.group > div {
+				background: #f8f8f8 !important;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Give Your Stylesheets a Clue</h1>
+		</header>
+		<article role="main">
+			<header>
+				<h1>The inKLing Page Structure</h1>
+			</header>
+
+			<p>
+				A basic inKLing page has a linear top-level structure in which all major elements on a page are direct children of the body.  Each of these elements should represent a semantic content segment.  They <em>should</em> be one of the following:
+			</p>
+			<ul>
+				<li><code>header</code></li>
+				<li><code>article</code></li>
+				<li><code>section</code></li>
+				<li><code>footer</code></li>
+			</ul>
+			<p>
+				Purely structural <code>div</code> elements are not welcome.  This means that you are either providing a page level header / footer, an article, or a section.  Structural divs, such as those that would encapsulate a major piece of content vs. a secondary navigation or sidebar should be placed inside a <code>section</code>.
+			</p>
+			<p>
+				You should use the <code>role="main"</code> attribute and value to signify which section or article is the main piece of content for the page.
+			</p>
+			<p>
+				All children of body's content segments (thus, grandchildren of the body) which do not have a class of <code>.billboard</code> are constrained horizontally to <code>70%</code> of the body width.
+			</p>
+
+			<div class="billboard highlight">
+				<p>
+					A <code>.billboard</code>, such as the parent of this paragraph is not constrained in the same way other grandchildren of the body are, however, all its children are.  This enables the easy creation of full-width content islands at any point in the flow of the content segment.
+				</p>
+			</div>
+
+			<h2>Groups and Sets</h2>
+			<p>
+				The <code>group</code> and <code>set</code> class are pseudo-semantic classes which can be added to parent elements to change the default layout properties of their children and also to encapsulate (when necessary) floated elements.  There are three "hints" which can be combined with either a <code>.group</code> or a <code>.set</code>:
+			</p>
+
+			<h3>Featurette</h3>
+			<div class="featurette group">
+				<div>
+					<h4>50% Left</h4>
+					<p>
+						A featurette provides a simple way to split content 50/50.  Like all <code>.group</code> and <code>.set</code> elements, it has a <code>4rem</code> gutter.
+					</p>
+				</div>
+				<div>
+					<h4>50% Right</h4>
+					<p>
+						In addition to the gutter, there is a <code>4rem</code> margin placed on the top and the bottom of <code>.group</code> and <code>.set</code> elements in order to differentiate them from surrounding content.  The only exception to this is when they immediately precede another heading.
+					</p>
+				</div>
+			</div>
+
+			<h3>Brochure</h3>
+			<p>
+				A <code>.brochure.group</code> works exactly the same as a <code>.featurette.group</code>, except that each child will be provided one-third of the content space to consume.
+			</p>
+			<div class="brochure group">
+				<div>
+					<h4>Left Side Content</h4>
+					<p>
+						On <code>.group</code> elements, the gutter itself is provided as a left margin to all elements.  Clears are specifically placed on the hinted <code>nth-child</code>, and the left margin is removed from the first elements on new rows.
+					</p>
+				</div>
+				<div>
+					<h4>Middle Content</h4>
+					<p>
+						The width of child elements within a <code>.group</code> is determined by a calculation of <code>d - m + (m / c)</code> where <code>d</code> is the desired width expressed as a percentage, <code>m</code> is the desired gutter/margin, and <code>c</code> is the count of elements per row.
+					</p>
+				</div>
+				<div>
+					<h4>Right Side Content</h4>
+					<p>
+						For example, the width <code>calc()</code> for these brochure elements is as follows:
+					</p>
+					<pre>33.3334% + 4rem - (4rem / 3)</pre>
+				</div>
+			</div>
+
+			<h4>Catalogue</h4>
+			<div class="catalogue group">
+				<div>
+					<h4>Left Side Content</h4>
+					<p>
+						The <code>.catalogue.group</code> acts just like the aforementioned group hints, but expects <code>4</code> children per row for a desired width of <code>25%</code>.
+					</p>
+				</div>
+				<div>
+					<h4>Middle Content</h4>
+					<p>
+						Catalogues are best used when you have a high number of items which need to present some introductory information, but maintain a terse structure.
+					</p>
+				</div>
+				<div>
+					<h4>Middle Content</h4>
+					<p>
+						Keep in mind that you don't need exactly <code>4</code> or a multiple thereof of child elements.  It is possible to add <code>5</code> elements to a <code>.catalogue.group</code> and the fifth will simply remain floated left.
+					</p>
+				</div>
+				<div>
+					<h4>Right Side Content</h4>
+					<p>
+						Be advised, however, that if the content of the children is not roughly the same height, then the additional whitespace caused by elements which are horizontally aligned with one another can be disconcerting.
+					</p>
+				</div>
+			</div>
+
+			<h3>Container Groups</h3>
+			<p>
+				Container groups work precisely the same as regular groups, so you can hint them with <code>.featurette</code>, <code>.brochure</code>, etc, such that you might have a <code>.container.featurette.group</code>.  The primary differenc is that in addition to gutter/margin, each child element is supplied a certain amount of padding.
+			</p>
+			<p>
+				Because of their nature, container groups are mostly designed for cases where one might apply a background color to the child elements to block them off and distinguish them further.  Since it is often the case that content heights might differ, container groups will also ensure that the background on all children is filled.
+			</p>
+			<div class="featurette container group">
+				<div>
+					<h3>Left Side Content</h3>
+					<p>
+						Note the different height between this and the column to the right.
+					</p>
+				</div>
+				<div>
+					<h3>Right Side Content</h3>
+					<p>
+						Despite the difference in height, the background color fills in and provides what is commonly referred to as "equal height columns."  While these patterns are easier to achieve with more modern techniques, inKLing provides compatibility back to IE9 and earlier versions of Chrome/Firefox, etc.
+					</p>
+				</div>
+			</div>
+
+
+
+			<div class="brochure container group">
+				<div>
+					<h3>Left Side Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<h3>Middle Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<h3>Right Side Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="catalogue container group">
+				<div>
+					<h3>Left Side Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<h3>Middle Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<h3>Middle Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<h3>Right Side Content</h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+			</div>
+
+
+			<div class="set" style="text-align: justify;">
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<hr />
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<hr />
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+			</div>
+
+			<div class="set featurette">
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorum impedit sit? Harum officia sint nulla expedita aut quibusdam impedit dicta nobis architecto perspiciatis tempore consequuntur quo ipsum, voluptatibus delectus.
+					</p>
+				</div>
+			</div>
+		</article>
+
+
+		<section class="headings">
+			<h1>Headings</h1>
+			<p>All headings consume <code>5rem</code> by default.  Although their heights will differ, their top-margin is adjusted according to their height such that they do not break the <code>5rem</code> limitation.  The bottom margin is always <code>1rem</code>.</p>
+
+			<h2>Heading 2</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque odio deleniti recusandae inventore aut, rerum commodi at sit quos eum repellendus neque vero, quae voluptatibus omnis, veniam optio sint nihil!
+			</p>
+
+			<h3>Heading 3</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque odio deleniti recusandae inventore aut, rerum commodi at sit quos eum repellendus neque vero, quae voluptatibus omnis, veniam optio sint nihil!
+			</p>
+			<h4>Heading 4</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque odio deleniti recusandae inventore aut, rerum commodi at sit quos eum repellendus neque vero, quae voluptatibus omnis, veniam optio sint nihil!
+			</p>
+			<h5>Heading 5</h5>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque odio deleniti recusandae inventore aut, rerum commodi at sit quos eum repellendus neque vero, quae voluptatibus omnis, veniam optio sint nihil!
+			</p>
+			<h6>Heading 6</h6>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque odio deleniti recusandae inventore aut, rerum commodi at sit quos eum repellendus neque vero, quae voluptatibus omnis, veniam optio sint nihil!
+			</p>
+		</section>
+
+		<section class="products">
+			<h1>Messaging</h1>
+
+			<div class="helper message">
+				<p>
+					Messages are a simple way to provide information to your users.  These can be used with everything from validation notices to simple informational helpers an coaching text.
+				</p>
+			</div>
+
+			<div class="notice message">
+				<p>
+					Every message starts as a <code>div.message</code> containing one ore more child elements and an optional type hinter.
+				</p>
+			</div>
+
+			<div class="success message">
+				<p>
+					By default, a <code>div.message</code> will look like the first message in this list, however, you can apply the additional classes as follows:
+				</p>
+				<ul>
+					<li>
+						<code>notice</code> - to convey acive information the user should take interest in.
+					</li>
+					<li>
+						<code>success</code> - to convey a successful action completed by the system.
+					</li>
+					<li>
+						<code>warning</code> - to convey information which someone <em>needs</em> to take not of.
+					</li>
+					<li>
+						<code>error</code> - to convey that an action has failed.
+					</li>
+				</ul>
+			</div>
+
+			<form class="warning message">
+				<p>
+					You can also apply the <code>.message</code> and message type hint classes to other elements, such as a <code>form</code> in order to create an alert of sorts.
+				</p>
+				<fieldset class="actions">
+					<button class="suggested" type="submit" name="confirm" value="1">Confirm</button>
+					<button type="submit" name="confirm" value="0">Cancel</button>
+				</fieldset>
+			</form>
+
+			<div class="error message">
+				<p>
+					About the only place that <code>.message</code> is not recommended, is directly on text parent such as being put on the <code>p</code> tag itself.
+				</p>
+			</div>
+		</section>
+		<footer>
+
+		</footer>
+	</body>
+</html>

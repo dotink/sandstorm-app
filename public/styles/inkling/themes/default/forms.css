@@ -1,0 +1,64 @@
+form {
+	color: #fff;
+	font-size: 1em;
+	border-color: #fff;
+}
+
+input[type=text],
+input[type=password],
+input[type=file] {
+	appearance: none;
+	background: transparent;
+	border: solid 2px;
+	color: currentColor;
+	padding: 1rem;
+	width: calc(100% - 2rem);
+	margin-bottom: 1.5em;
+	font-size: 1em;
+}
+
+label {
+	display: block;
+	margin-bottom: .5em;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	visibility: hidden;
+}
+
+
+input[type=checkbox] + label,
+input[type=radio] + label {
+	font-size: 1em;
+	margin-top: -1em;
+}
+
+input[type=checkbox] + label:before,
+input[type=radio] + label:before {
+	display: inline-block;
+	content: ' ';
+	height: 1em;
+	width: 1em;
+	text-align: center;
+	vertical-align: middle;
+	font-family: entypo;
+	border: solid 2px;
+	border-color: inherit;
+	margin-top: -2px;
+	color: transparent;
+	transition: color .5s;
+	content: '\274C';
+}
+
+input[type=checkbox]:checked + label:before,
+input[type=checkbox] + label:hover:before,
+input[type=radio]:checked + label:before,
+input[type=radio] + label:hover:before {
+	color: inherit;
+	transition: color .5s;
+}
+
+input[type=checkbox] + label:hover:before,
+input[type=radio] + label:hover:before {
+}
