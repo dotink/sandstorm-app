@@ -15,6 +15,8 @@
 	$app  	= new Core(realpath(__DIR__));
 	$broker = new Injector();
 
+	$broker->share($app);
+
 	if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '.env')) {
 		$dotenv = new Dotenv(__DIR__);
 		$dotenv->load();
