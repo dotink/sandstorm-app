@@ -22,7 +22,8 @@
 		"php": ">=5.4.0",
 		"rdlowrey/auryn": "dev-master",
 		"dotink/affinity": "dev-master",
-		"dotink/inkwell-core": "dev-master"
+		"dotink/inkwell-core": "dev-master",
+		"vlucas/phpdotenv": "~2.0.0"
 	},
 	"autoload": {
 		"classmap": ["user/"]
