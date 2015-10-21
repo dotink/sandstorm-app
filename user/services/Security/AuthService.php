@@ -1,10 +1,26 @@
 <?php namespace Sandstorm\Security
 {
-	use Services_Twilio as Twilio;
-	use Sandstorm\PhoneNumbers;
+	use Inkwell\Auth;
+	use Inkwell\Http\Resource\Request;
+	use Inkwell\Core as App;
 
+	use Services_Twilio as Twilio;
+
+	use Sandstorm;
+
+	/**
+	 *
+	 *
+	 * TODO: This class should be split into two services.  Auth should handle getting a user
+	 * authorized, while firewall (separate middleware) should handle request path authorization.
+	 * This will prevent us from having to use service locator pattern in checkAccess() with the
+	 * $this->app call.
+	 *
+	 */
 	class AuthService
 	{
+		const SESSION_KEY = 'AUTHORIZED_NUMBER';
+
 		/**
 		 * A pool of words from which to generate login phrases
 		 *
@@ -14,24 +30,40 @@
 		 */
 		static protected $pool = [
 			'at',    'to',    'it',    'if',    'on',    'or',    'do',    'go',    'be',
-			'hi',
+			'hi',    'as',    'me',    'by',    'no',    'so',    'my',    'an',    'up',
 			'run',   'see',   'sea',   'bar',   'rap',   'toe',   'jam',   'box',   'cat',
-			'dog',
-			'off',   'sky',   'rot',   'cow',   'mop',   'pat',   'and',   'leg',   'eye',
-			'ear',
+			'dog',   'get',   'vet',   'zoo',   'new',   'tap',   'fat',   'fog',   'day',
+			'off',   'sky',   'rot',   'cow',   'map',   'pat',   'and',   'leg',   'eye',
+			'ear',   'hog',   'log',   'max',   'nut',   'owl',   'row',   'oil',   'sit',
 			'stop',  'word',  'safe',  'jump',  'work',  'fall',  'lift',  'walk',  'test',
-			'card',
+			'card',  'copy',  'days',  'dull',  'diet',  'dude',  'figs',  'feed',  'flaw',
 			'cool',  'slip',  'tree',  'poor',  'tool',  'sock',  'cork',  'beer',  'food',
-			'meal',
+			'meal',  'ache',  'acid',  'bash',  'bolt',  'boot',  'bomb',  'burn',  'cube',
 			'trees', 'tired', 'phone', 'perch', 'sock',  'pizza', 'party', 'table', 'drink',
-			'makes',
+			'makes', 'jumpy', 'jimmy', 'junky', 'juicy', 'wimpy', 'kicks', 'major', 'puppy'
 		];
 
 		/**
 		 *
 		 */
-		public function __construct(Twilio $twilio, PhoneNumbers $phone_numbers)
+		static protected $publicPaths = '#^(/|/login)$#';
+
+		/**
+		 *
+		 */
+		static protected $registrationPath = '/profile';
+
+		/**
+		 *
+		 */
+		static protected $startPaths = '#^(/|/login)$#';
+
+		/**
+		 *
+		 */
+		public function __construct(App $app, Twilio $twilio, Sandstorm\PhoneNumbers $phone_numbers)
 		{
+			$this->app          = $app;
 			$this->twilio       = $twilio;
 			$this->phoneNumbers = $phone_numbers;
 		}
@@ -42,7 +74,54 @@
 		 */
 		public function __invoke($request, $response, $next = NULL)
 		{
-			return $next($request, $response);
+			$number = NULL;
+
+			if (isset($_SESSION[static::SESSION_KEY])) {
+				$number = $this->phoneNumbers->find($_SESSION[static::SESSION_KEY]);
+			}
+
+			if ($number) {
+				$this->app['auth.init']($number);
+
+				$number->setLoginPhrase(NULL);
+				// $this->phoneNumbers->save($number);
+
+			} else {
+				unset($_SESSION[static::SESSION_KEY]);
+
+			}
+
+			if (!$this->checkAccess($request)) {
+
+				//
+				// TODO: Flash message that the account no longer exists and/or
+				// page is not accessible
+				//
+
+				$response->setStatusCode(303);
+				$response->headers->set(
+					'Location',
+					$request->getURI()->modify('/')
+				);
+
+			} elseif ($number && preg_match(static::$startPaths, $request->getURI()->getPath())) {
+				//
+				// TODO: This should be changed to redirect to their dashboard in the future
+				// but for now, we'll just send them to the profile.
+				//
+
+				$response->setStatusCode(303);
+				$response->headers->set(
+					'Location',
+					$request->getURI()->modify('/profile')
+				);
+
+			} else {
+				$response = $next($request, $response);
+
+			}
+
+			return $response;
 		}
 
 
@@ -76,11 +155,37 @@
 			);
 
 			$this->phoneNumbers->save($number);
+
+			return TRUE;
 		}
 
 
 		/**
+		 * Log in a number with the given pass phrase
 		 *
+		 *
+		 */
+		public function login($number, $phrase)
+		{
+			$digits = $this->phoneNumbers->normalize($number);
+			$number = $this->phoneNumbers->findOneByDigits($digits);
+
+			if ($number->getLoginPhrase() == $phrase) {
+				$_SESSION[static::SESSION_KEY] = $number->getId();
+
+				return TRUE;
+			}
+
+			return FALSE;
+		}
+
+
+		/**
+		 * Generate a login phrase of variable length
+		 *
+		 * @access protected
+		 * @param integer $length The length, in words, of the login phrase
+		 * @return string The login phrase which was generated
 		 */
 		protected function generatePhrase($length = 3)
 		{
@@ -91,6 +196,38 @@
 			}
 
 			return implode(' ', $phrase);
+		}
+
+
+		/**
+		 * Checks whether or not a request is accessible for the authed entity
+		 *
+		 * @access protected
+		 * @param Request $request The request to check
+		 * @return boolean TRUE if the current request is accessible, FALSE otherwise
+		 */
+		protected function checkAccess($request)
+		{
+			if (preg_match(static::$publicPaths, $request->getURI()->getPath())) {
+				return TRUE; // The URI is public
+			}
+
+			if ($this->app['auth']->entity instanceof Auth\AnonymousUser) {
+				return FALSE; // The person is not logged in
+			}
+
+			if ($request->getURI()->getPath() == static::$registrationPath) {
+				return TRUE;  // The person is logged in, and is accessing the registration page
+			}
+
+			if (!$this->app['auth']->entity->getPerson()) {
+				return FALSE; // The person is logged in, but has not completed profile
+			}
+
+			//
+			// TODO: Check configured role and role based access
+			//
+			return TRUE;
 		}
 	}
 }

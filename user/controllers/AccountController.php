@@ -39,8 +39,9 @@
 			if ($this->request->checkMethod(HTTP\POST)) {
 				$number = $this->request->params->get('number');
 
-				$auth_service->handshake($number);
-				$this->router->redirect('/login');
+				if ($auth_service->handshake($number)) {
+					$this->router->redirect('/login?number=' . $number);
+				}
 			}
 
 			return $this->view->load('account/enter.html');
@@ -48,21 +49,48 @@
 
 
 		/**
+		 * Entry point to allow users to log in with a login phone number and login phrase
 		 *
+		 * @access public
+		 * @param AuthService $auth_service The authorization service
+		 * @return View A login view
 		 */
 		public function login(AuthService $auth_service)
 		{
+			$number = $this->request->params->get('number');
+
 			if ($this->request->checkMethod(HTTP\POST)) {
-				$code = $this->request->params->get('code');
+				$phrase = $this->request->params->get('phrase');
 
-				if (!$code) {
-
+				if ($auth_service->login($number, $phrase)) {
+					// TODO: redirect to dashboard when available
+					$this->router->redirect('/profile');
 				}
-
-				$auth_service->login($code);
 			}
 
-			return $this->view->load('account/login.html');
+			return $this->view->load('account/login.html', ['number' => $number]);
+		}
+
+
+		/**
+		 * Entry point to allow users manage their profile
+		 *
+		 * @access public
+		 * @param ProfileService The profile service
+		 * @return View A profile view
+		 */
+		public function profile(ProfileService $profile_service)
+		{
+			if ($this->request->checkMethod(HTTP\POST)) {
+				$data = $this->request->params->get();
+
+				$profile_service->update($data);
+			}
+
+			return $this->view->load('account/profile.html', [
+				'person'       => $profile_service->getPerson(),
+				'action_types' => $profile_service->getActionTypes()
+			]);
 		}
 	}
 }
