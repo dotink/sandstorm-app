@@ -11,11 +11,15 @@ Sandstorm\Person:
         strategy: IDENTITY
 
   fields:
+    nickName:
+      column: nick_name
+      type: string
     name:
       column: name
       type: string
-    nickName:
-      column: nick_name
+      nullable: true
+    emailAddress:
+      column: email_address
       type: string
     addressLine1:
       column: address_line_1
@@ -36,7 +40,6 @@ Sandstorm\Person:
     postalCode:
       column: postal_code
       type: string
-      nullable: true
     longitude:
       column: longitude
       type: float

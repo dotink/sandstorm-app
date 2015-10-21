@@ -26,6 +26,12 @@
 		 * @access protected
 		 * @var string
 		 */
+		protected $emailAddress;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
 		protected $addressLine1;
 
 		/**
@@ -151,6 +157,18 @@
 		public function getDateJoined()
 		{
 			return $this->dateJoined;
+		}
+
+
+		/**
+		 * Get the value of emailAddress
+		 *
+		 * @access public
+		 * @return string The value of emailAddress
+		 */
+		public function getEmailAddress()
+		{
+			return $this->emailAddress;
 		}
 
 
@@ -341,6 +359,21 @@
 		public function setDateJoined($value)
 		{
 			$this->dateJoined = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of emailAddress
+		 *
+		 * @access public
+		 * @param string $value The value to set to emailAddress
+		 * @return Person The object instance for method chaining
+		 */
+		public function setEmailAddress($value)
+		{
+			$this->emailAddress = $value;
 
 			return $this;
 		}

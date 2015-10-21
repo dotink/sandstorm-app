@@ -20,7 +20,8 @@
 			//
 
 			'mapping' => [
-				'iMarc\Auth\EntityInterface' => 'Inkwell\Auth\AnonymousUser'
+				'iMarc\Auth\EntityInterface'                => 'Inkwell\Auth\AnonymousUser',
+				'Doctrine\Common\Persistence\ObjectManager' => 'Doctrine\ORM\EntityManager'
 			]
 		],
 
@@ -55,6 +56,7 @@
 			'links' => [
 				'/'            => 'Sandstorm\AccountController::enter',
 				'/login'       => 'Sandstorm\AccountController::login',
+				'/profile'     => 'Sandstorm\AccountController::profile',
 				'/[(.*):path]' => 'Sandstorm\MainController::page'
 			],
 

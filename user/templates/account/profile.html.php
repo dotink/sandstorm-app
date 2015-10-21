@@ -1,34 +1,45 @@
-<?php
+<?php namespace Inkwell\HTML;
 
 	$this->expand('content', 'master.html');
 
 	?>
 	<section role="main">
-		<form>
+		<form class="profile" method="post" action="/profile">
 			<legend>Tell us a little bit about yourself</legend>
-
 
 			<label>
 				What should we call you?
-				<input type="text" name="nickName" />
+				<input type="text" name="nickName" value="<?= $this('person.nickName') ?>" required />
 			</label>
 
 			<label>
 				What's your full name?
-				<input type="text" name="name" />
+				<input type="text" name="name" value="<?= $this('person.name') ?>" />
 			</label>
 
 			<label>
 				E-mail address:
-				<input type="text" name="email" />
+				<input type="text" name="emailAddress" value="<?= $this('person.emailAddress') ?>" required />
 			</label>
 
 			<label>
 				Postal Code:
-				<input type="text" name="postalCode" />
+				<input type="text" name="postalCode" value="<?= $this('person.postalCode') ?>" required />
 			</label>
 
-			<!-- replace with button -->
-			<a class="action" href="/dashboard/">Save</a>
+			<?php if (count($this('action_types'))) { ?>
+				<fieldset>
+					<legend>Select your interests</legend>
+					<input type="hidden" name="interests" value="" />
+					<?php html::per($this('action_types'), $this(function($i, $type) { ?>
+						<label class="option">
+							<input type="checkbox" name="interests[]" value="<?= $this('type.id') ?>" <?= $this('person')->hasInterest($type) ? 'checked' : '' ?>/>
+							<span><?= $this('type.name') ?></span>
+						</label>
+					<?php })) ?>
+				</fieldset>
+			<?php } ?>
+
+			<button type="submit">Save</button>
 		</form>
 	</section>
