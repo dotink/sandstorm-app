@@ -5,6 +5,10 @@ html {
 	background: #222;
 }
 
+p, ul, ol, label, legend {
+	line-height: 1.5em;
+}
+
 body > section {
 	background: #fff;
 }

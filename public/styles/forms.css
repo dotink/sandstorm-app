@@ -1,9 +1,5 @@
-
-
 label {
 	display: block;
-	text-align: center;
-	line-height: 2em;
 	margin-bottom: 2rem;
 }
 
@@ -13,20 +9,77 @@ input {
 	width: 100%;
 	padding: 1rem;
 	font-size: 1.4rem;
-	text-align: center;
 	font-weight: bold;
 }
 
 button, a.action {
+	text-align: center;
 	box-sizing: border-box;
 	font-weight: normal;
 	text-decoration: none;
 	display: inline-block;
 	width: 100%;
 	margin-bottom: 2rem;
-	padding: 1rem 2rem;
+	padding: 2rem 4rem;
 	background: transparent;
-	color: #222;
+	color: #3c82af;
 	border: solid 2px;
 	cursor: pointer;
+}
+
+legend {
+	text-align: center;
+	padding: 2rem;
+	background: #eee;
+	margin-bottom: 2rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+
+label.option {
+	width: 100%;
+	cursor: pointer;
+	font-size: 2rem;
+	line-height: 1.5em;
+}
+
+	label.option input[type=checkbox] {
+		display: none;
+	}
+
+	label.option span {
+		display: inline-block;
+		background: transparent;
+		border: none;
+		width: auto;
+	}
+
+	label.option span::before {
+		display: block;
+		float: left;
+		width: .8em;
+		height: .8em;
+		line-height: .8em;
+		margin: -.15em 2rem 0 0;
+		content: "\f00c";
+		background-color: #8cb3d7;
+		text-align: center;
+		font-family: "FontAwesome";
+		font-size: 3.2rem;
+		color: transparent;
+		text-indent: -.1em;
+		padding: .20em;
+	}
+
+	label.option input[type=checkbox]:checked + span::before {
+		color: #fff;
+	}
+
+form {
+	text-align: center;
+}
+
+form.profile {
+	text-align: left;
 }
