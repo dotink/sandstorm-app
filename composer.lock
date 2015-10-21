@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52ebf3e58796d3735d8584d57055d00f",
-    "content-hash": "20d662b4415077f326169cd67fca17c3",
+    "hash": "d7ab38b685d398393839d96b390cda10",
+    "content-hash": "49c6649888752b9f08f43ab4b4f53d2c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1694,6 +1694,51 @@
             "time": "2015-02-22 20:52:20"
         },
         {
+            "name": "imarc/tenet",
+            "version": "2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imarc/tenet.git",
+                "reference": "a530b7cc7cf2932772f64f2e4c03aa35f3ab40b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imarc/tenet/zipball/a530b7cc7cf2932772f64f2e4c03aa35f3ab40b7",
+                "reference": "a530b7cc7cf2932772f64f2e4c03aa35f3ab40b7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.4",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tenet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Turcotte",
+                    "email": "jeff@imarc.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Doctrine Extensions & Helpers",
+            "keywords": [
+                "doctrine",
+                "orm"
+            ],
+            "time": "2015-10-20 06:05:39"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -2484,7 +2529,8 @@
         "dotink/inkwell-doctrine": 20,
         "twilio/sdk": 20,
         "dotink/inkwell-auth": 20,
-        "dotink/inkwell-relay": 20
+        "dotink/inkwell-relay": 20,
+        "imarc/tenet": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

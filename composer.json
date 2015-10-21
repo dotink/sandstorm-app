@@ -28,7 +28,8 @@
 		"dotink/inkwell-doctrine": "dev-master",
 		"twilio/sdk": "dev-master",
 		"dotink/inkwell-auth": "dev-master",
-		"dotink/inkwell-relay": "dev-master"
+		"dotink/inkwell-relay": "dev-master",
+		"imarc/tenet": "~2.0@dev"
 	},
 	"autoload": {
 		"classmap": ["user/"]
