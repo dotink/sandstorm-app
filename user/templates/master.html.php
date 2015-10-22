@@ -12,6 +12,7 @@
 	</head>
 	<body>
 		<header>
+			<img src="/images/logo.png" class="branding" />
 		</header>
 		<?php $this->insert('content') ?>
 		<footer>

@@ -7,6 +7,9 @@
 		<form method="post" action="login">
 
 			<?php if ($this('number')) { ?>
+				<div class="message success">
+					<p>You should receive a text with your login phrase momentarily.</p>
+				</div>
 				<input type="hidden" name="number" value="<?= $this('number') ?>" />
 			<?php } else { ?>
 				<label>

@@ -3,6 +3,7 @@
 html {
 	text-align: center;
 	background: #222;
+	color: #222;
 }
 
 p, ul, ol, label, legend {
@@ -13,7 +14,41 @@ body > section {
 	background: #fff;
 }
 
+body > header {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	background: #444;
+}
+
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: #ea504e;
+	text-decoration: none;
+}
 
 .alt {
 	font-size: 1.2rem;
+}
+
+.message {
+	position: relative;
+}
+
+.message::before {
+	position: absolute;
+	right: -4rem;
+	top: -1rem;
+	float: none;
+	margin: 0;
+}
+
+.message > * {
+	margin-left: 0;
+}
+
+.notice {
+	color: #68a8d5;
 }
