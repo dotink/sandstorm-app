@@ -57,6 +57,11 @@ Sandstorm\Person:
       targetEntity: Sandstorm\Organization
       mappedBy: owner
 
+    phoneNumbers:
+      targetEntity: Sandstorm\PhoneNumber
+      mappedBy: person
+      cascade: ["persist"]
+
   manyToMany:
     roles:
       targetEntity: Sandstorm\PersonType

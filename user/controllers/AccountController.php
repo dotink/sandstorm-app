@@ -73,6 +73,32 @@
 
 
 		/**
+		 *
+		 * TODO: Remove once a better system is in place
+		 */
+		public function create(ProfileService $profile_service)
+		{
+			$action = $this->request->params->get('action');
+			$pass   = $this->request->params->get('pass');
+			$allow  = $pass == getenv('CREATE_PASS');
+
+			if ($this->request->checkMethod(HTTP\POST) && $allow && $action == 'create') {
+				$data = $this->request->params->get();
+
+				$profile_service->create($data);
+			}
+
+			return $this->view->load('account/create.html', [
+				'person'       => $profile_service->getPerson(),
+				'action_types' => $profile_service->getActionTypes(),
+				'allow'        => $allow,
+				'pass'         => $pass
+			]);
+
+		}
+
+
+		/**
 		 * Entry point to allow users manage their profile
 		 *
 		 * @access public

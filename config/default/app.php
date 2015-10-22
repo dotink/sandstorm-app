@@ -57,6 +57,7 @@
 				'/'            => 'Sandstorm\AccountController::enter',
 				'/login'       => 'Sandstorm\AccountController::login',
 				'/profile'     => 'Sandstorm\AccountController::profile',
+				'/create'      => 'Sandstorm\AccountController::create',
 				'/[(.*):path]' => 'Sandstorm\MainController::page'
 			],
 

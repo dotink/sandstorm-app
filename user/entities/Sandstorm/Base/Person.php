@@ -14,13 +14,13 @@
 		 * @access protected
 		 * @var string
 		 */
-		protected $name;
+		protected $nickName;
 
 		/**
 		 * @access protected
 		 * @var string
 		 */
-		protected $nickName;
+		protected $name;
 
 		/**
 		 * @access protected
@@ -92,6 +92,12 @@
 		 * @access protected
 		 * @var ArrayCollection
 		 */
+		protected $phoneNumbers;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
 		protected $roles;
 
 		/**
@@ -107,6 +113,7 @@
 		public function __construct()
 		{
 			$this->organizations = new ArrayCollection();
+			$this->phoneNumbers = new ArrayCollection();
 			$this->roles = new ArrayCollection();
 			$this->interests = new ArrayCollection();
 		}
@@ -253,6 +260,18 @@
 		public function getOrganizations()
 		{
 			return $this->organizations;
+		}
+
+
+		/**
+		 * Get the value of phoneNumbers
+		 *
+		 * @access public
+		 * @return ArrayCollection The value of phoneNumbers
+		 */
+		public function getPhoneNumbers()
+		{
+			return $this->phoneNumbers;
 		}
 
 

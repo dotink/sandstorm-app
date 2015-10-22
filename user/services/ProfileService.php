@@ -33,10 +33,25 @@
 		/**
 		 *
 		 */
+		public function create($data)
+		{
+			 $person = $this->getPerson();
+
+			 $this->accessor->fill($person, $data);
+			 $this->accessor->fill($person, ['person' => $person]);
+
+			 $this->people->save($person);
+		}
+
+
+		/**
+		 *
+		 */
 		public function getPerson()
 		{
-			return $this->auth->entity->getPerson()
-				?: $this->people->create();
+			return !$this->auth->entity instanceof Auth\AnonymousUser
+			    ? $this->auth->entity->getPerson()
+				: $this->people->create();
 		}
 
 

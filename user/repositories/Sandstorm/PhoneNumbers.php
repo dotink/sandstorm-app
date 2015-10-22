@@ -9,9 +9,11 @@
 		/**
 		 *
 		 */
-		public function normalize($number)
+		static public function normalize($number)
 		{
-			return preg_replace('#[^0-9]#', '', $number);
+			$model = static::MODEL;
+
+			return $model::normalize($number);
 		}
 	}
 

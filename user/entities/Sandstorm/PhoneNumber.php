@@ -12,6 +12,15 @@
 		use AccessibleTrait;
 
 		/**
+		 *
+		 */
+		static public function normalize($number)
+		{
+			return preg_replace('#[^0-9]#', '', $number);
+		}
+
+
+		/**
 		 * Instantiate a new PhoneNumber
 		 */
 		public function __construct()
@@ -28,6 +37,7 @@
 			return [];
 		}
 
+
 		/**
 		 *
 		 */
@@ -42,6 +52,14 @@
 			}, $this->getPerson()->getRoles()->toArray());
 		}
 
+
+		/**
+		 *
+		 */
+		public function setDigits($number)
+		{
+			parent::setDigits(static::normalize($number));
+		}
 	}
 
 }
