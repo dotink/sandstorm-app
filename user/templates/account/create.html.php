@@ -28,8 +28,7 @@
 
 				<label>
 					Phone Number:
-					<input type="text" name="phoneNumbers[1][digits]" value="<?= $this('phoneNumber.1.digits') ?>" required />
-					<input type="hidden" name="phoneNumbers[1][type]" value="Mobile" />
+					<input type="text" name="phoneNumbers[1][digits]" value="<?= $this('phoneNumber.1.digits') ?>" />
 				</label>
 
 				<?php if (count($this('action_types'))) { ?>

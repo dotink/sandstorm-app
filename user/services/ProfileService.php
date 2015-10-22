@@ -37,6 +37,12 @@
 		{
 			 $person = $this->getPerson();
 
+			 foreach ($data['phoneNumbers'] as $i => $phone_number_data) {
+				 if (!$phone_number_data['digits']) {
+					 unset($data['phoneNumbers'][$i]);
+				 }
+			 }
+
 			 $this->accessor->fill($person, $data);
 			 $this->accessor->fill($person, ['person' => $person]);
 

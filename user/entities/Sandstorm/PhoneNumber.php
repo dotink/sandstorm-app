@@ -25,6 +25,8 @@
 		 */
 		public function __construct()
 		{
+			$this->type = 'Mobile';
+
 			return parent::__construct();
 		}
 
