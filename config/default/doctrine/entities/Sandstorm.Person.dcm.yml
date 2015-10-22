@@ -70,9 +70,11 @@ Sandstorm\Person:
         joinColumns:
           type:
             referencedColumnName: id
+            onDelete: CASCADE
         inverseJoinColumns:
           person:
             referencedColumnName: id
+            onDelete: CASCADE
 
     interests:
       targetEntity: Sandstorm\ActionType
@@ -81,9 +83,11 @@ Sandstorm\Person:
         joinColumns:
           person:
             referencedColumnName: id
+            onDelete: CASCADE
         inverseJoinColumns:
           interest:
             referencedColumnName: id
+            onDelete: CASCADE
 
   oneToOne:
     primaryPhoneNumber:
