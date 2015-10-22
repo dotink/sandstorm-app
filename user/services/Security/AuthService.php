@@ -80,11 +80,11 @@
 				$number = $this->phoneNumbers->find($_SESSION[static::SESSION_KEY]);
 			}
 
-			if ($number) {
-				$this->app['auth.init']($number);
+			$this->app['auth.init']($number ?: new Auth\AnonymousUser());
 
+			if ($number) {
 				$number->setLoginPhrase(NULL);
-				// $this->phoneNumbers->save($number);
+				$this->phoneNumbers->save($number);
 
 			} else {
 				unset($_SESSION[static::SESSION_KEY]);
