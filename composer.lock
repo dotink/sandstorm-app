@@ -1437,12 +1437,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-routing.git",
-                "reference": "829f9f307704d7b1e0688a4331e01d463d6ac4f0"
+                "reference": "25eb1555ba2ae0072b445d9459a0b9f8deb63f2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-routing/zipball/829f9f307704d7b1e0688a4331e01d463d6ac4f0",
-                "reference": "829f9f307704d7b1e0688a4331e01d463d6ac4f0",
+                "url": "https://api.github.com/repos/dotink/inkwell-routing/zipball/25eb1555ba2ae0072b445d9459a0b9f8deb63f2c",
+                "reference": "25eb1555ba2ae0072b445d9459a0b9f8deb63f2c",
                 "shasum": ""
             },
             "require": {
@@ -1483,7 +1483,7 @@
             "support": {
                 "source": "https://github.com/dotink/inkwell-routing/tree/master"
             },
-            "time": "2015-10-04 01:28:54"
+            "time": "2015-10-23 07:28:24"
         },
         {
             "name": "dotink/inkwell-transport",
