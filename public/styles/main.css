@@ -6,6 +6,11 @@ html {
 	color: #3a3a3a;
 }
 
+html,
+body {
+	overflow-x: hidden;
+}
+
 p, ul, ol, label, legend {
 	line-height: 1.5em;
 }
