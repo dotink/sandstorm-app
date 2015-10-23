@@ -56,10 +56,9 @@
 		public function getPerson()
 		{
 			$anonymous = $this->auth->entity instanceof Auth\AnonymousUser;
-			$person    = $this->auth->entity->getPerson();
 
-			return !$anonymous && $person
-			    ? $this->auth->entity->getPerson()
+			return !$anonymous && $this->auth->entity->getPerson()
+				? $this->auth->entity->getPerson()
 				: $this->people->create();
 		}
 

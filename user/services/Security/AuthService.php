@@ -170,7 +170,7 @@
 			$digits = $this->phoneNumbers->normalize($number);
 			$number = $this->phoneNumbers->findOneByDigits($digits);
 
-			if ($number->getLoginPhrase() == strtolower($phrase)) {
+			if ($number && $number->getLoginPhrase() == strtolower($phrase)) {
 				$_SESSION[static::SESSION_KEY] = $number->getId();
 
 				return TRUE;
