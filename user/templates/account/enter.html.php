@@ -7,7 +7,7 @@
 		<form method="post" action="/">
 			<label>
 				Enter your mobile number to log in to access your dashboard
-				<input type="text" name="number" />
+				<input type="tel" name="number" required />
 			</label>
 			<div class="message notice">
 				<p>
