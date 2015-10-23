@@ -22,10 +22,8 @@ button, a.action {
 	width: 100%;
 	margin-bottom: 2rem;
 	padding: 2rem 4rem;
-	background: #68a8d5;
-	border-color: #68a8d5;
-	color: #fff;
-	border: solid 2px;
+	background: #e6e6e6;
+	color: #000;
 	text-align: center;
 	cursor: pointer;
 }
@@ -37,6 +35,7 @@ legend {
 	margin-bottom: 2rem;
 	width: 100%;
 	box-sizing: border-box;
+	border-radius: .25rem;
 }
 
 
@@ -66,7 +65,7 @@ label.option {
 		line-height: .8em;
 		margin: -.15em 2rem 0 0;
 		content: "";
-		background-color: #8cb3d7;
+		background-color: #7D9CBF;
 		text-align: center;
 		font-family: "icon";
 		font-size: 3.2rem;

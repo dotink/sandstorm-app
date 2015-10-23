@@ -14,6 +14,21 @@
 		<header>
 			<img src="/images/logo.png" class="branding" />
 		</header>
+		<?php if ($this('messenger')) { ?>
+			<div class="messages">
+				<?php
+					foreach(['notice', 'success', 'error'] as $message) {
+						if ($message = $this('messenger')->retrieve($message)) {
+							?>
+							<div class="message <?= $message->name ?>">
+								<?= $message->content ?>
+							</div>
+							<?php
+						}
+					}
+				?>
+			</div>
+		<?php } ?>
 		<?php $this->insert('content') ?>
 		<footer>
 		</footer>

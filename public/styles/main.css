@@ -2,12 +2,20 @@
 
 html {
 	text-align: center;
-	background: #222;
-	color: #222;
+	background: #3a3a3a;
+	color: #3a3a3a;
 }
 
 p, ul, ol, label, legend {
 	line-height: 1.5em;
+}
+
+body > *       > .billboard > *,
+body > header  > :not(.billboard),
+body > article > :not(.billboard),
+body > section > :not(.billboard),
+body > footer  > :not(.billboard) {
+	max-width: 90%;
 }
 
 body > section {
@@ -17,7 +25,14 @@ body > section {
 body > header {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
-	background: #444;
+	background: #5C718A;
+	border-bottom: solid 5px #eee;
+}
+
+body > .messages {
+	padding: 0;
+	overflow: hidden;
+	background: #fff;
 }
 
 
@@ -33,11 +48,15 @@ a:active {
 	font-size: 1.2rem;
 }
 
-.message {
+body > header .branding {
+	margin-left: 5%;
+}
+
+.section .message {
 	position: relative;
 }
 
-.message::before {
+.section .message::before {
 	position: absolute;
 	right: -4rem;
 	top: -1rem;
@@ -45,10 +64,31 @@ a:active {
 	margin: 0;
 }
 
-.message > * {
+.section .message > * {
 	margin-left: 0;
 }
 
+.messages .message {
+	color: #fff;
+	border-width: 0px;
+}
+
+.messages .success {
+	background-color: #718A5C;
+}
+
+.messages .notice {
+	background-color: #3A3A3A;
+}
+
+.messages .error {
+	background-color: #8A5E5C;
+}
+
 .notice {
-	color: #68a8d5;
+	color: #5C718A;
+}
+
+.success {
+	color: #718A5C;
 }

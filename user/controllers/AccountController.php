@@ -2,6 +2,7 @@
 {
 	use IW\HTTP;
 
+	use Dotink\Flourish\Messenger;
 	use Inkwell\Controller\BaseController;
 	use Inkwell\View;
 
@@ -12,16 +13,32 @@
 	 */
 	class AccountController extends BaseController
 	{
+		const MSG_INIT      = 'You should receive a text with your passphrase momentarily.';
+		const MSG_INCORRECT = 'The passphrase you entered was incorrect, please try again.';
+		const MSG_THANKS    = 'Thanks, make sure to come back if you need to update your info.';
+
+		/**
+		 *
+		 */
+		protected $messenger;
+
+		/**
+		 *
+		 */
 		protected $view;
+
 
 		/**
 		 * Instantiate the AccountController
 		 *
 		 * @param View $view The view object to be used on subsequent actions
 		 */
-		public function __construct(View $view)
+		public function __construct(View $view, Messenger $messenger)
 		{
-			$this->view = $view;
+			$this->view      = $view;
+			$this->messenger = $messenger;
+
+			$this->view->set('messenger', $messenger);
 		}
 
 
@@ -40,6 +57,8 @@
 				$number = $this->request->params->get('number');
 
 				if ($auth_service->handshake($number)) {
+					$this->messenger->record('notice', self::MSG_INIT);
+
 					$this->router->redirect('/login?number=' . $number);
 				}
 			}
@@ -66,6 +85,8 @@
 					// TODO: redirect to dashboard when available
 					$this->router->redirect('/profile');
 				}
+
+				$this->messenger->record('error', self::MSG_INCORRECT);
 			}
 
 			return $this->view->load('account/login.html', ['number' => $number]);
@@ -111,6 +132,9 @@
 				$data = $this->request->params->get();
 
 				$profile_service->update($data);
+				$this->messenger->record('success', self::MSG_THANKS);
+
+				$this->router->redirect();
 			}
 
 			return $this->view->load('account/profile.html', [

@@ -29,7 +29,8 @@
 		"twilio/sdk": "dev-master",
 		"dotink/inkwell-auth": "dev-master",
 		"dotink/inkwell-relay": "dev-master",
-		"imarc/tenet": "~2.0@dev"
+		"imarc/tenet": "~2.0@dev",
+		"dotink/flourish-messenger": "dev-master"
 	},
 	"autoload": {
 		"classmap": ["user/"]

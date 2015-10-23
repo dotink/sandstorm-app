@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d7ab38b685d398393839d96b390cda10",
-    "content-hash": "49c6649888752b9f08f43ab4b4f53d2c",
+    "hash": "712bfdad8c713e2cff7f2e2da8ad1196",
+    "content-hash": "aa50343b635fafa31208903dbeb8b961",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -796,6 +796,55 @@
                 "issues": "https://github.com/dotink/flourish-core/issues"
             },
             "time": "2015-04-22 06:09:18"
+        },
+        {
+            "name": "dotink/flourish-messenger",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dotink/flourish-messenger.git",
+                "reference": "fbcbcfc8a9630e8dffce42b27b3dc2380eef028d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dotink/flourish-messenger/zipball/fbcbcfc8a9630e8dffce42b27b3dc2380eef028d",
+                "reference": "fbcbcfc8a9630e8dffce42b27b3dc2380eef028d",
+                "shasum": ""
+            },
+            "require": {
+                "imarc/opus": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "opus-package",
+            "extra": {
+                "opus": []
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "AGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew J. Sahagian",
+                    "email": "msahagian@dotink.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Session based messaging for alerts and notifications",
+            "keywords": [
+                "alert",
+                "message",
+                "notification"
+            ],
+            "support": {
+                "source": "https://github.com/dotink/flourish-messenger/tree/master",
+                "issues": "https://github.com/dotink/flourish-messenger/issues"
+            },
+            "time": "2015-10-23 04:52:49"
         },
         {
             "name": "dotink/flourish-url",
@@ -2530,7 +2579,8 @@
         "twilio/sdk": 20,
         "dotink/inkwell-auth": 20,
         "dotink/inkwell-relay": 20,
-        "imarc/tenet": 20
+        "imarc/tenet": 20,
+        "dotink/flourish-messenger": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
