@@ -2,6 +2,7 @@
 {
 	use Inkwell\Auth;
 	use Tenet\Accessor;
+	use Dotink\Flourish;
 
 	/**
 	 *
@@ -13,11 +14,12 @@
 		/**
 		 *
 		 */
-		public function __construct(People $people, ActionTypes $action_types, Accessor $accessor)
+		public function __construct(People $people, PhoneNumbers $phone_numbers, ActionTypes $action_types, Accessor $accessor)
 		{
-			$this->people      = $people;
-			$this->actionTypes = $action_types;
-			$this->accessor    = $accessor;
+			$this->people       = $people;
+			$this->actionTypes  = $action_types;
+			$this->phoneNumbers = $phone_numbers;
+			$this->accessor     = $accessor;
 		}
 
 
@@ -35,18 +37,32 @@
 		 */
 		public function create($data)
 		{
-			 $person = $this->getPerson();
+			$person = $this->getPerson();
 
-			 foreach ($data['phoneNumbers'] as $i => $phone_number_data) {
-				 if (!$phone_number_data['digits']) {
-					 unset($data['phoneNumbers'][$i]);
-				 }
-			 }
+			foreach ($data['phoneNumbers'] as $i => $phone_number_data) {
+				if (!$phone_number_data['digits']) {
+					unset($data['phoneNumbers'][$i]);
+				}
+			}
 
-			 $this->accessor->fill($person, $data);
-			 $this->accessor->fill($person, ['person' => $person]);
+			$this->accessor->fill($person, $data);
+			$this->accessor->fill($person, ['person' => $person]);
 
-			 $this->people->save($person);
+			if ($this->people->findOneBy(['emailAddress' => $person->getEmailAddress()])) {
+				throw new Flourish\ValidationException(
+					'A person with that e-mail already exists, please skip!'
+				);
+			}
+
+			$first_number = $person->getPhoneNumbers()->first();
+
+			if ($first_number && $this->phoneNumbers->findOneBy(['digits' => $first_number->getDigits()])) {
+				throw new Flourish\ValidationException(
+					'A person with phone number already exists, please skip!'
+				);
+			}
+
+			$this->people->save($person);
 		}
 
 

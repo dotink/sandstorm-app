@@ -2,7 +2,7 @@
 {
 	use IW\HTTP;
 
-	use Dotink\Flourish\Messenger;
+	use Dotink\Flourish;
 	use Inkwell\Controller\BaseController;
 	use Inkwell\View;
 
@@ -33,12 +33,44 @@
 		 *
 		 * @param View $view The view object to be used on subsequent actions
 		 */
-		public function __construct(View $view, Messenger $messenger)
+		public function __construct(View $view, Flourish\Messenger $messenger)
 		{
 			$this->view      = $view;
 			$this->messenger = $messenger;
 
 			$this->view->set('messenger', $messenger);
+		}
+
+
+		/**
+		 *
+		 * TODO: Remove once a better system is in place
+		 */
+		public function create(ProfileService $profile_service)
+		{
+			$action = $this->request->params->get('action');
+			$pass   = $this->request->params->get('pass');
+			$allow  = $pass == getenv('CREATE_PASS');
+
+			if ($this->request->checkMethod(HTTP\POST) && $allow && $action == 'create') {
+				$data = $this->request->params->get();
+
+				try {
+					$profile_service->create($data);
+					$this->messenger->record('success', 'The contact has been added!');
+
+				} catch (Flourish\ValidationException $e) {
+					$this->messenger->record('error', $e->getMessage());
+				}
+			}
+
+			return $this->view->load('account/create.html', [
+				'person'       => $profile_service->getPerson(),
+				'action_types' => $profile_service->getActionTypes(),
+				'allow'        => $allow,
+				'pass'         => $pass
+			]);
+
 		}
 
 
@@ -94,32 +126,6 @@
 
 
 		/**
-		 *
-		 * TODO: Remove once a better system is in place
-		 */
-		public function create(ProfileService $profile_service)
-		{
-			$action = $this->request->params->get('action');
-			$pass   = $this->request->params->get('pass');
-			$allow  = $pass == getenv('CREATE_PASS');
-
-			if ($this->request->checkMethod(HTTP\POST) && $allow && $action == 'create') {
-				$data = $this->request->params->get();
-
-				$profile_service->create($data);
-			}
-
-			return $this->view->load('account/create.html', [
-				'person'       => $profile_service->getPerson(),
-				'action_types' => $profile_service->getActionTypes(),
-				'allow'        => $allow,
-				'pass'         => $pass
-			]);
-
-		}
-
-
-		/**
 		 * Entry point to allow users manage their profile
 		 *
 		 * @access public
@@ -134,7 +140,7 @@
 				$profile_service->update($data);
 				$this->messenger->record('success', self::MSG_THANKS);
 
-				$this->router->redirect();
+				$this->router->redirect(NULL);
 			}
 
 			return $this->view->load('account/profile.html', [
