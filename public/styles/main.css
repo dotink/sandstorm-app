@@ -48,10 +48,6 @@ a:active {
 	font-size: 1.2rem;
 }
 
-body > header .branding {
-	margin-left: 5%;
-}
-
 .section .message {
 	position: relative;
 }
