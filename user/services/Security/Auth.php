@@ -85,7 +85,7 @@
 				$number = $this->phoneNumbers->find($_SESSION[static::SESSION_KEY]);
 			}
 
-			$this->app['auth.init']($number ?: new Auth\AnonymousUser());
+			$this->app['auth.init']($number ?: new AnonymousUser());
 
 			if ($number) {
 				$number->setLoginPhrase(NULL);
@@ -230,7 +230,7 @@
 				return TRUE; // The URI is public
 			}
 
-			if ($this->app['auth']->entity instanceof Auth\AnonymousUser) {
+			if ($this->app['auth']->entity instanceof AnonymousUser) {
 				return FALSE; // The person is not logged in
 			}
 
