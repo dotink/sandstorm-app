@@ -37,7 +37,7 @@
 		 */
 		public function setEmailAddress($email_address)
 		{
-			parent::setEmailAddres(strtolower($email_address));
+			parent::setEmailAddress(strtolower($email_address));
 		}
 	}
 }
