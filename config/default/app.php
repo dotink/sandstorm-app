@@ -1,5 +1,7 @@
 <?php
 
+	use IW\HTTP;
+
 	return Affinity\Config::create(['providers', 'middleware', 'routes'], [
 		'@providers' => [
 			//
@@ -69,7 +71,7 @@
 			//
 
 			'handlers' => [
-
+				HTTP\NOT_FOUND => 'Sandstorm\MainController::notFound'
 			],
 
 			//
@@ -77,7 +79,9 @@
 			//
 
 			'redirects' => [
-
+				HTTP\REDIRECT_PERMANENT => [
+					'/user' => '/dashboard'
+				]
 			]
 		]
 	]);

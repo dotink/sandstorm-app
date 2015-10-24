@@ -1,10 +1,23 @@
 <?php namespace Sandstorm
 {
+	use IW\HTTP;
+
 	use Inkwell\Controller\BaseController;
 	use Inkwell\View;
 
+	use Dotink\Flourish;
+
+	/**
+	 * A main/fallback and error controller
+	 */
 	class MainController extends BaseController
 	{
+		/**
+		 * A view object to render templates
+		 *
+		 * @access protected
+		 * @var View
+		 */
 		protected $view;
 
 		/**
@@ -17,7 +30,22 @@
 
 
 		/**
+		 * Handle not found responses
 		 *
+		 * @access public
+		 * @return View A not found view
+		 */
+		public function notFound()
+		{
+			return $this->view->load('errors/not_found.html');
+		}
+
+
+		/**
+		 * Load a static template as a page for non-dynamic content
+		 *
+		 * @access public
+		 * @return Response A response containing the loaded view, or a 404 if not found
 		 */
 		public function page()
 		{
