@@ -68,11 +68,11 @@ Sandstorm\Person:
       joinTable:
         name: roles
         joinColumns:
-          type:
+          person:
             referencedColumnName: id
             onDelete: CASCADE
         inverseJoinColumns:
-          person:
+          type:
             referencedColumnName: id
             onDelete: CASCADE
 
