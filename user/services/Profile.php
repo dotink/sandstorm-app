@@ -23,11 +23,13 @@
 		public function __construct(
 			People $people,
 			PhoneNumbers $phone_numbers,
+			PersonTypes $person_types,
 			ActionTypes $action_types,
 			Accessor $accessor
 		) {
 			$this->people       = $people;
 			$this->actionTypes  = $action_types;
+			$this->personTypes  = $person_types;
 			$this->phoneNumbers = $phone_numbers;
 			$this->accessor     = $accessor;
 		}
@@ -105,12 +107,17 @@
 		 */
 		public function update($data)
 		{
-			 $person = $this->getPerson();
+			$person    = $this->getPerson();
+			$user_role = $this->personTypes->findOneByName('user');
 
-			 $this->accessor->fill($person, $data);
-			 $this->accessor->fill($this->auth->entity, ['person' => $person]);
+			$this->accessor->fill($person, $data);
+			$this->accessor->fill($this->auth->entity, ['person' => $person]);
 
-			 $this->people->save($person);
+			if (!$person->getRoles()->contains($user_role)) {
+				$person->getRoles()->add($user_role);
+			}
+
+			$this->people->save($person);
 		}
 	}
 }
