@@ -49,7 +49,8 @@
 		 */
 		public function create($data)
 		{
-			$person = $this->getPerson();
+			$person    = $this->getPerson();
+			$user_role = $this->personTypes->findOneByName('user');
 
 			foreach ($data['phoneNumbers'] as $i => $phone_number_data) {
 				if (!$phone_number_data['digits']) {
@@ -72,6 +73,10 @@
 				throw new Flourish\ValidationException(
 					'A person with phone number already exists, please skip!'
 				);
+			}
+
+			if (!$person->getRoles()->contains($user_role)) {
+				$person->getRoles()->add($user_role);
 			}
 
 			$this->people->save($person);
