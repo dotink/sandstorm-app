@@ -30,5 +30,14 @@
 		{
 			return $this->getInterests()->contains($action_type);
 		}
+
+
+		/**
+		 *
+		 */
+		public function setEmailAddress($email_address)
+		{
+			parent::setEmailAddres(strtolower($email_address));
+		}
 	}
 }
