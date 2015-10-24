@@ -110,15 +110,10 @@
 				);
 
 			} elseif ($number && preg_match(static::$startPaths, $request->getURI()->getPath())) {
-				//
-				// TODO: This should be changed to redirect to their dashboard in the future
-				// but for now, we'll just send them to the profile.
-				//
-
 				$response->setStatusCode(303);
 				$response->headers->set(
 					'Location',
-					$request->getURI()->modify('/profile')
+					$request->getURI()->modify('/dashboard')
 				);
 
 			} else {
