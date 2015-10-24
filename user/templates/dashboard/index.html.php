@@ -4,9 +4,14 @@
 
 	?>
 	<section role="main">
-		<h1>Welcome</h1>
+		<h1>Welcome <?= $this('person.nickName') ?></h1>
+		<p>
+			Thanks for signing up with Sandstorm.  Sandstorm is a way for organizers to easily and
+			effectively coordinate volunteer efforts.  We're still in the process of developing
+			more features, so make sure you check back for updates.
+		</p>
 
-		<!-- if actions -->
+		<!-- if actions
 			<h2>Your Actions</h2>
 
 			<div class="action">
@@ -16,7 +21,7 @@
 					<span class="date time">October 18th @ 9:00am</span>
 					<span class="location">
 						<a href="http://maps.google.com?q=">Mountain View, CA</a>
-					</span> <!-- clickable google maps to exact address -->
+					</span>
 				</div>
 				<a class="action" href="/actions/example">View</a>
 			</div>

@@ -32,7 +32,8 @@
 			//
 
 			'providers' => [
-				'Sandstorm\Security\AuthService'
+				'Sandstorm\Security\Auth',
+				'Inkwell\Doctrine\Middleware\Flush',
 			]
 		],
 
@@ -54,11 +55,13 @@
 			//
 
 			'links' => [
-				'/'            => 'Sandstorm\AccountController::enter',
-				'/login'       => 'Sandstorm\AccountController::login',
-				'/profile'     => 'Sandstorm\AccountController::profile',
-				'/create'      => 'Sandstorm\AccountController::create',
-				'/[(.*):path]' => 'Sandstorm\MainController::page'
+				'/'                => 'Sandstorm\AccountController::enter',
+				'/login'           => 'Sandstorm\AccountController::login',
+				'/profile'         => 'Sandstorm\AccountController::profile',
+				'/create'          => 'Sandstorm\AccountController::create',
+				'/dashboard'       => 'Sandstorm\DashboardController::main',
+				'/user/[!:method]' => 'Sandstorm\UserController::[lc:method]', // actions, organizations
+				'/[(.*):path]'     => 'Sandstorm\MainController::page'
 			],
 
 			//

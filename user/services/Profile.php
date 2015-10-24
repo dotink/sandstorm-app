@@ -7,15 +7,25 @@
 	/**
 	 *
 	 */
-	class ProfileService implements Auth\ConsumerInterface
+	class Profile implements Auth\ConsumerInterface
 	{
 		use Auth\StandardConsumer;
 
 		/**
 		 *
 		 */
-		public function __construct(People $people, PhoneNumbers $phone_numbers, ActionTypes $action_types, Accessor $accessor)
-		{
+		protected $person = NULL;
+
+
+		/**
+		 *
+		 */
+		public function __construct(
+			People $people,
+			PhoneNumbers $phone_numbers,
+			ActionTypes $action_types,
+			Accessor $accessor
+		) {
 			$this->people       = $people;
 			$this->actionTypes  = $action_types;
 			$this->phoneNumbers = $phone_numbers;
@@ -76,6 +86,17 @@
 			return !$anonymous && $this->auth->entity->getPerson()
 				? $this->auth->entity->getPerson()
 				: $this->people->create();
+		}
+
+
+		/**
+		 *
+		 */
+		public function exists()
+		{
+			$person = $this->getPerson();
+
+			return $this->people->isPersisted($person);
 		}
 
 

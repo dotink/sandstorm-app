@@ -1,10 +1,13 @@
 <?php namespace Sandstorm\Security
 {
-	use Inkwell\Auth;
+	use Inkwell\Event;
+	use Inkwell\Auth\AnonymousUser;
 	use Inkwell\Http\Resource\Request;
+	use Inkwell\Http\Resource\Response;
 	use Inkwell\Core as App;
 
 	use Services_Twilio as Twilio;
+	use Services_Twilio_RestException as TwilioException;
 
 	use Sandstorm;
 
@@ -17,8 +20,10 @@
 	 * $this->app call.
 	 *
 	 */
-	class AuthService
+	class Auth implements Event\EmitterInterface
 	{
+		use Event\Emitter;
+
 		const SESSION_KEY = 'AUTHORIZED_NUMBER';
 
 		/**
@@ -72,7 +77,7 @@
 		/**
 		 *
 		 */
-		public function __invoke($request, $response, $next = NULL)
+		public function __invoke(Request $request, Response $response, $next = NULL)
 		{
 			$number = NULL;
 
@@ -131,6 +136,7 @@
 		 * This sends a text to the user and stores their login phrase.
 		 *
 		 * @param string $number The telephone number to send the login phrase to
+		 * @throws Flourish\ConnectivityException if the handshake cannot be initiated
 		 * @return void
 		 */
 		public function handshake($number)
@@ -142,17 +148,23 @@
 			if (!$number) {
 				$number = $this->phoneNumbers->create();
 
-				$number->setType('Mobile');
 				$number->setDigits($digits);
 			}
 
 			$number->setLoginPhrase($phrase);
 
-			$message = $this->twilio->account->messages->sendMessage(
-				getenv('TWILIO_NUMBER'),
-				$number->getDigits(),
-			  	sprintf('Your SandStorm login phrase is: %s', $phrase)
-			);
+			try {
+				$message = $this->twilio->account->messages->sendMessage(
+					getenv('TWILIO_NUMBER'),
+					$number->getDigits(),
+				  	sprintf('Your SandStorm login phrase is: %s', $phrase)
+				);
+
+			} catch (TwilioException $e) {
+				throw new Flourish\ConnectivityException(
+					'Problem sending login phrase: ' . $e->getMessage()
+				);
+			}
 
 			$this->phoneNumbers->save($number);
 
@@ -173,10 +185,16 @@
 			if ($number && $number->getLoginPhrase() == strtolower($phrase)) {
 				$_SESSION[static::SESSION_KEY] = $number->getId();
 
-				return TRUE;
-			}
+				$this->app['auth.init']($number);
+				$this->emit('auth::init', [
+					'auth' => $this->app['auth']
+				]);
 
-			return FALSE;
+			} else {
+				throw new Flourish\ValidationException(
+					'Incorrect number or login passphrase provided'
+				);
+			}
 		}
 
 

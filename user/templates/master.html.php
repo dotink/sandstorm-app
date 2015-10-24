@@ -31,6 +31,13 @@
 		<?php } ?>
 		<?php $this->insert('content') ?>
 		<footer>
+			<?php if ($this('auth') && $this('auth')->is('user')) { ?>
+				<nav>
+					<ul>
+						<li><a href="/profile">Your Profile</a></li>
+					</ul>
+				</nav>
+			<?php } ?>
 		</footer>
 	</body>
 </html>
