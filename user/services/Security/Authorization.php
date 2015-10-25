@@ -1,7 +1,7 @@
 <?php namespace Sandstorm\Security
 {
 	use Inkwell\Event;
-	use Inkwell\Auth\AnonymousUser;
+	use Inkwell\Auth;
 	use Inkwell\Http\Resource\Request;
 	use Inkwell\Http\Resource\Response;
 	use Inkwell\Core as App;
@@ -20,7 +20,7 @@
 	 * $this->app call.
 	 *
 	 */
-	class Auth implements Event\EmitterInterface
+	class Authorization implements Event\EmitterInterface
 	{
 		use Event\Emitter;
 
@@ -85,7 +85,7 @@
 				$number = $this->phoneNumbers->find($_SESSION[static::SESSION_KEY]);
 			}
 
-			$this->app['auth.init']($number ?: new AnonymousUser());
+			$this->app['auth.init']($number ?: new Auth\AnonymousUser());
 
 			if ($number) {
 				$number->setLoginPhrase(NULL);
@@ -106,7 +106,10 @@
 				$response->setStatusCode(303);
 				$response->headers->set(
 					'Location',
-					$request->getURI()->modify('/')
+					$request->getURI()->modify([
+						'path'  => '/',
+						'query' => array()
+					])
 				);
 
 			} elseif ($number && preg_match(static::$startPaths, $request->getURI()->getPath())) {
@@ -225,7 +228,7 @@
 				return TRUE; // The URI is public
 			}
 
-			if ($this->app['auth']->entity instanceof AnonymousUser) {
+			if ($this->app['auth']->entity instanceof Auth\AnonymousUser) {
 				return FALSE; // The person is not logged in
 			}
 

@@ -3,17 +3,20 @@
 	use IW\HTTP;
 
 	use Inkwell\View;
+	use Inkwell\Auth;
 	use Inkwell\Controller\BaseController;
 
 	use Dotink\Flourish;
 
-	use Sandstorm\Security\Auth;
+	use Sandstorm\Security\Authorization;
 
 	/**
 	 * The account controller is responsible for entry points for account access and settings
 	 */
-	class AccountController extends BaseController
+	class AccountController extends BaseController implements Auth\ConsumerInterface
 	{
+		use Auth\StandardConsumer;
+
 		const MSG_NO_NUMBER = 'You must enter a telephone number to begin.';
 		const MSG_INIT      = 'You should receive a text with your passphrase momentarily.';
 		const MSG_PROBLEM   = 'There was a probem trying to send the passphrase.  Try again later.';
@@ -93,10 +96,10 @@
 		 * login page.
 		 *
 		 * @access public
-		 * @param Auth $auth The authorization service to use for the handshake
+		 * @param Authorization $authorization The authorization service to use for the handshake
 		 * @return View The enter view
 		 */
-		public function enter(Auth $auth)
+		public function enter(Authorization $authorization)
 		{
 			if ($this->request->checkMethod(HTTP\POST)) {
 				$number = $this->request->params->get('number');
@@ -106,7 +109,7 @@
 
 				} else {
 					try {
-						$auth->handshake($number);
+						$authorization->handshake($number);
 						$this->messenger->record('notice', self::MSG_INIT);
 
 						$this->router->redirect('/login?number=' . $number);
@@ -125,11 +128,11 @@
 		 * Entry point to allow users to log in with a phone number and login phrase
 		 *
 		 * @access public
-		 * @param Auth $auth The authorization service
+		 * @param Authorization $authorization The authorization service
 		 * @param Profile $profile The profile service
 		 * @return View A login view
 		 */
-		public function login(Auth $auth, Profile $profile)
+		public function login(Authorization $authorization, Profile $profile)
 		{
 			$number = $this->request->params->get('number');
 
@@ -137,7 +140,7 @@
 				$phrase = $this->request->params->get('phrase');
 
 				try {
-					$auth->login($number, $phrase);
+					$authorization->login($number, $phrase);
 
 					if ($profile->exists()) {
 						$this->router->redirect('/dashboard');
@@ -152,6 +155,17 @@
 			}
 
 			return $this->view->load('account/login.html', ['number' => $number]);
+		}
+
+
+		/**
+		 *
+		 */
+		public function prepare($action, $context = array())
+		{
+			$this->view->set('auth', $this->auth);
+
+			parent::prepare($action, $context);
 		}
 
 

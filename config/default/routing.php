@@ -16,7 +16,7 @@
 		// Whether or not we should attempt to try URLs with and without trailing slashes
 		//
 
-		'restless' => TRUE,
+		'restless' => FALSE,
 
 		//
 		// The default word separator for url components

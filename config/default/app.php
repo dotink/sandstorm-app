@@ -34,7 +34,7 @@
 			//
 
 			'providers' => [
-				'Sandstorm\Security\Auth',
+				'Sandstorm\Security\Authorization',
 				'Inkwell\Doctrine\Middleware\Flush',
 			]
 		],
