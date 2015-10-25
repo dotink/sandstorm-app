@@ -25,11 +25,6 @@ Sandstorm\Organization:
         referencedColumnName: id
         onDelete: SET NULL
 
-  oneToMany:
-    phoneNumbers:
-      targetEntity: Sandstorm\PhoneNumber
-      mappedBy: organization
-
   oneToOne:
     primaryAccount:
       targetEntity: Sandstorm\Account

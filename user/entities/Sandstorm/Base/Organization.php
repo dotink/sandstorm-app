@@ -30,12 +30,6 @@
 
 		/**
 		 * @access protected
-		 * @var ArrayCollection
-		 */
-		protected $phoneNumbers;
-
-		/**
-		 * @access protected
 		 * @var Sandstorm\Person
 		 */
 		protected $owner;
@@ -52,7 +46,6 @@
 		 */
 		public function __construct()
 		{
-			$this->phoneNumbers = new ArrayCollection();
 			$this->leaders = new ArrayCollection();
 		}
 
@@ -114,18 +107,6 @@
 		public function getOwner()
 		{
 			return $this->owner;
-		}
-
-
-		/**
-		 * Get the value of phoneNumbers
-		 *
-		 * @access public
-		 * @return ArrayCollection The value of phoneNumbers
-		 */
-		public function getPhoneNumbers()
-		{
-			return $this->phoneNumbers;
 		}
 
 
