@@ -1,27 +1,10 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Action
+	class Action extends Entity
 	{
-		/**
-		 * @access protected
-		 * @var integer
-		 */
-		protected $id;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $name;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $description;
-
 		/**
 		 * @access protected
 		 * @var ArrayCollection
@@ -36,9 +19,15 @@
 
 		/**
 		 * @access protected
-		 * @var Sandstorm\ActionType
+		 * @var string
 		 */
-		protected $type;
+		protected $description;
+
+		/**
+		 * @access protected
+		 * @var integer
+		 */
+		protected $id;
 
 		/**
 		 * @access protected
@@ -51,6 +40,18 @@
 		 * @var Sandstorm\Location
 		 */
 		protected $location;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $name;
+
+		/**
+		 * @access protected
+		 * @var Sandstorm\ActionType
+		 */
+		protected $type;
 
 		/**
 		 * @access protected

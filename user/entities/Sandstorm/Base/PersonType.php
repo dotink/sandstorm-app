@@ -1,8 +1,9 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class PersonType
+	class PersonType extends Entity
 	{
 		/**
 		 * @access protected

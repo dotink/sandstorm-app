@@ -1,9 +1,16 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class PhoneNumber
+	class PhoneNumber extends Entity
 	{
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $digits;
+
 		/**
 		 * @access protected
 		 * @var integer
@@ -14,25 +21,19 @@
 		 * @access protected
 		 * @var string
 		 */
-		protected $digits;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
 		protected $loginPhrase;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $type;
 
 		/**
 		 * @access protected
 		 * @var Sandstorm\Person
 		 */
 		protected $person;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $type;
 
 
 		/**

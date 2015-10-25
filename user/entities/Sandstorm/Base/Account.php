@@ -1,21 +1,10 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Account
+	class Account extends Entity
 	{
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $id;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $name;
-
 		/**
 		 * @access protected
 		 * @var ArrayCollection
@@ -27,6 +16,18 @@
 		 * @var ArrayCollection
 		 */
 		protected $expenses;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $id;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $name;
 
 		/**
 		 * @access protected

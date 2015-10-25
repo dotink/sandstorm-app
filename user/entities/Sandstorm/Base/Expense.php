@@ -1,26 +1,21 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Expense
+	class Expense extends Entity
 	{
 		/**
 		 * @access protected
-		 * @var integer
+		 * @var Sandstorm\Account
 		 */
-		protected $id;
+		protected $account;
 
 		/**
 		 * @access protected
-		 * @var string
+		 * @var Sandstorm\Action
 		 */
-		protected $description;
-
-		/**
-		 * @access protected
-		 * @var \DateTime
-		 */
-		protected $dateReported;
+		protected $action;
 
 		/**
 		 * @access protected
@@ -36,27 +31,33 @@
 
 		/**
 		 * @access protected
-		 * @var ArrayCollection
+		 * @var \DateTime
 		 */
-		protected $payments;
+		protected $dateReported;
 
 		/**
 		 * @access protected
-		 * @var Sandstorm\Action
+		 * @var string
 		 */
-		protected $action;
+		protected $description;
 
 		/**
 		 * @access protected
-		 * @var Sandstorm\Account
+		 * @var integer
 		 */
-		protected $account;
+		protected $id;
 
 		/**
 		 * @access protected
 		 * @var Sandstorm\Person
 		 */
 		protected $organizer;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $payments;
 
 
 		/**

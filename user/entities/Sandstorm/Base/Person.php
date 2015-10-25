@@ -1,33 +1,10 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Person
+	class Person extends Entity
 	{
-		/**
-		 * @access protected
-		 * @var integer
-		 */
-		protected $id;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $nickName;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $name;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $emailAddress;
-
 		/**
 		 * @access protected
 		 * @var string
@@ -48,21 +25,27 @@
 
 		/**
 		 * @access protected
-		 * @var string
+		 * @var \DateTime
 		 */
-		protected $state;
+		protected $dateJoined;
 
 		/**
 		 * @access protected
 		 * @var string
 		 */
-		protected $postalCode;
+		protected $emailAddress;
 
 		/**
 		 * @access protected
-		 * @var float
+		 * @var integer
 		 */
-		protected $longitude;
+		protected $id;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $interests;
 
 		/**
 		 * @access protected
@@ -72,27 +55,21 @@
 
 		/**
 		 * @access protected
-		 * @var \DateTime
+		 * @var float
 		 */
-		protected $dateJoined;
+		protected $longitude;
 
 		/**
 		 * @access protected
-		 * @var Sandstorm\PhoneNumber
+		 * @var string
 		 */
-		protected $primaryPhoneNumber;
+		protected $name;
 
 		/**
 		 * @access protected
-		 * @var ArrayCollection
+		 * @var string
 		 */
-		protected $phoneNumbers;
-
-		/**
-		 * @access protected
-		 * @var ArrayCollection
-		 */
-		protected $roles;
+		protected $nickName;
 
 		/**
 		 * @access protected
@@ -104,7 +81,31 @@
 		 * @access protected
 		 * @var ArrayCollection
 		 */
-		protected $interests;
+		protected $phoneNumbers;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $postalCode;
+
+		/**
+		 * @access protected
+		 * @var Sandstorm\PhoneNumber
+		 */
+		protected $primaryPhoneNumber;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $roles;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $state;
 
 
 		/**

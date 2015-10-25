@@ -1,14 +1,27 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Organization
+	class Organization extends Entity
 	{
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $description;
+
 		/**
 		 * @access protected
 		 * @var integer
 		 */
 		protected $id;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $leaders;
 
 		/**
 		 * @access protected
@@ -18,27 +31,15 @@
 
 		/**
 		 * @access protected
-		 * @var string
-		 */
-		protected $description;
-
-		/**
-		 * @access protected
-		 * @var Sandstorm\Account
-		 */
-		protected $primaryAccount;
-
-		/**
-		 * @access protected
 		 * @var Sandstorm\Person
 		 */
 		protected $owner;
 
 		/**
 		 * @access protected
-		 * @var ArrayCollection
+		 * @var Sandstorm\Account
 		 */
-		protected $leaders;
+		protected $primaryAccount;
 
 
 		/**

@@ -1,26 +1,21 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Payment
+	class Payment extends Entity
 	{
 		/**
 		 * @access protected
-		 * @var string
+		 * @var float
 		 */
-		protected $id;
+		protected $amount;
 
 		/**
 		 * @access protected
 		 * @var \DateTime
 		 */
 		protected $datePosted;
-
-		/**
-		 * @access protected
-		 * @var float
-		 */
-		protected $amount;
 
 		/**
 		 * @access protected
@@ -33,6 +28,12 @@
 		 * @var Sandstorm\Expense
 		 */
 		protected $expense;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $id;
 
 
 		/**

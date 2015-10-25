@@ -1,21 +1,10 @@
 <?php namespace Sandstorm\Base {
 
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Sandstorm\Entity;
 
-	class Location
+	class Location extends Entity
 	{
-		/**
-		 * @access protected
-		 * @var integer
-		 */
-		protected $id;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $name;
-
 		/**
 		 * @access protected
 		 * @var string
@@ -30,27 +19,21 @@
 
 		/**
 		 * @access protected
+		 * @var integer
+		 */
+		protected $capacity;
+
+		/**
+		 * @access protected
 		 * @var string
 		 */
 		protected $city;
 
 		/**
 		 * @access protected
-		 * @var string
+		 * @var integer
 		 */
-		protected $state;
-
-		/**
-		 * @access protected
-		 * @var string
-		 */
-		protected $postalCode;
-
-		/**
-		 * @access protected
-		 * @var float
-		 */
-		protected $longitude;
+		protected $id;
 
 		/**
 		 * @access protected
@@ -60,9 +43,27 @@
 
 		/**
 		 * @access protected
-		 * @var integer
+		 * @var float
 		 */
-		protected $capacity;
+		protected $longitude;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $name;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $postalCode;
+
+		/**
+		 * @access protected
+		 * @var string
+		 */
+		protected $state;
 
 
 		/**
