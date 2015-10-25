@@ -2,7 +2,7 @@
 
 	use IW\HTTP;
 
-	return Affinity\Config::create(['providers', 'middleware', 'routes'], [
+	return Affinity\Config::create(['providers', 'middleware', 'routes', 'auth'], [
 		'@providers' => [
 			//
 			//
@@ -81,6 +81,24 @@
 			'redirects' => [
 				HTTP\REDIRECT_PERMANENT => [
 					'/user' => '/dashboard'
+				]
+			]
+		],
+
+		'@auth' => [
+
+			'aliases' => [
+				'manage' => ['create', 'remove', 'update', 'select'],
+				'admin'  => ['manage', 'permit']
+			],
+
+			'permissions' => [
+				'User' => [
+					'Sandstorm\Organization' => ['manage']
+				],
+
+				'Admin' => [
+
 				]
 			]
 		]
