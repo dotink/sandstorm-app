@@ -40,6 +40,12 @@
 		 */
 		protected $owner;
 
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $leaders;
+
 
 		/**
 		 * Instantiate a new Organization
@@ -47,6 +53,7 @@
 		public function __construct()
 		{
 			$this->phoneNumbers = new ArrayCollection();
+			$this->leaders = new ArrayCollection();
 		}
 
 
@@ -71,6 +78,18 @@
 		public function getId()
 		{
 			return $this->id;
+		}
+
+
+		/**
+		 * Get the value of leaders
+		 *
+		 * @access public
+		 * @return ArrayCollection The value of leaders
+		 */
+		public function getLeaders()
+		{
+			return $this->leaders;
 		}
 
 

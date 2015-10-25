@@ -86,12 +86,6 @@
 		 * @access protected
 		 * @var ArrayCollection
 		 */
-		protected $organizations;
-
-		/**
-		 * @access protected
-		 * @var ArrayCollection
-		 */
 		protected $phoneNumbers;
 
 		/**
@@ -99,6 +93,12 @@
 		 * @var ArrayCollection
 		 */
 		protected $roles;
+
+		/**
+		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $organizations;
 
 		/**
 		 * @access protected
@@ -112,9 +112,9 @@
 		 */
 		public function __construct()
 		{
-			$this->organizations = new ArrayCollection();
 			$this->phoneNumbers = new ArrayCollection();
 			$this->roles = new ArrayCollection();
+			$this->organizations = new ArrayCollection();
 			$this->interests = new ArrayCollection();
 		}
 

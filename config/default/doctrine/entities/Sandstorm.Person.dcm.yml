@@ -53,10 +53,6 @@ Sandstorm\Person:
       type: date
 
   oneToMany:
-    organizations:
-      targetEntity: Sandstorm\Organization
-      mappedBy: owner
-
     phoneNumbers:
       targetEntity: Sandstorm\PhoneNumber
       mappedBy: person
@@ -73,6 +69,19 @@ Sandstorm\Person:
             onDelete: CASCADE
         inverseJoinColumns:
           type:
+            referencedColumnName: id
+            onDelete: CASCADE
+
+    organizations:
+      targetEntity: Sandstorm\Organization
+      joinTable:
+        name: members
+        joinColumns:
+          person:
+            referencedColumnName: id
+            onDelete: CASCADE
+        inverseJoinColumns:
+          organization:
             referencedColumnName: id
             onDelete: CASCADE
 

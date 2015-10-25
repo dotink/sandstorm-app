@@ -20,7 +20,6 @@ Sandstorm\Organization:
   manyToOne:
     owner:
       targetEntity: Sandstorm\Person
-      inversedBy: organizations
       joinColumn:
         name: owner
         referencedColumnName: id
@@ -38,3 +37,17 @@ Sandstorm\Organization:
         name: primary_account
         referencedColumnName: id
         onDelete: SET NULL
+
+  manyToMany:
+    leaders:
+      targetEntity: Sandstorm\Organization
+      joinTable:
+        name: leaders
+        joinColumns:
+          organization:
+            referencedColumnName: id
+            onDelete: CASCADE
+        inverseJoinColumns:
+          person:
+            referencedColumnName: id
+            onDelete: CASCADE
