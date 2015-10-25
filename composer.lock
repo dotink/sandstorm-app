@@ -1165,12 +1165,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-doctrine.git",
-                "reference": "4a0b4c9c388fa0ff0e308ae2852f47dcb76881b4"
+                "reference": "2aa32330b0598645036a5f14f78f5b509de3e35c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-doctrine/zipball/4a0b4c9c388fa0ff0e308ae2852f47dcb76881b4",
-                "reference": "4a0b4c9c388fa0ff0e308ae2852f47dcb76881b4",
+                "url": "https://api.github.com/repos/dotink/inkwell-doctrine/zipball/2aa32330b0598645036a5f14f78f5b509de3e35c",
+                "reference": "2aa32330b0598645036a5f14f78f5b509de3e35c",
                 "shasum": ""
             },
             "require": {
@@ -1214,7 +1214,7 @@
                 "source": "https://github.com/dotink/inkwell-doctrine/tree/master",
                 "issues": "https://github.com/dotink/inkwell-doctrine/issues"
             },
-            "time": "2015-10-24 23:22:47"
+            "time": "2015-10-25 06:05:29"
         },
         {
             "name": "dotink/inkwell-events",

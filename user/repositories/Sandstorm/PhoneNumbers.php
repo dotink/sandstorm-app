@@ -1,20 +1,20 @@
-<?php namespace Sandstorm {
-
+<?php namespace Sandstorm
+{
 	use Inkwell\Doctrine\Repository;
 
+	/**
+	 *
+	 */
 	class PhoneNumbers extends Repository
 	{
-		const MODEL = 'Sandstorm\PhoneNumber';
-
 		/**
 		 *
 		 */
 		static public function normalize($number)
 		{
-			$model = static::MODEL;
+			$model = $this->model;
 
 			return $model::normalize($number);
 		}
 	}
-
 }
