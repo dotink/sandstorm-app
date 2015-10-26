@@ -4,8 +4,7 @@
 	use Closure;
 	use IW;
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
+	$message = NULL;
 
 	try {
 
@@ -31,13 +30,10 @@
 		}
 
 	} catch (Exception $e) {
-		if (!$app->checkExecutionMode(IW\EXEC_MODE\PRODUCTION)) {
-			throw $e;
-			exit(-1);
-		}
+		$message = $e->getMessage();
 	}
 
 	header('HTTP/1.1 500 Internal Server Error');
-	echo 'Something has gone terribly wrong.';
+	echo 'There was a problem initializing the application: ' . ($message ?: 'Unknown Error');
 	exit(-1);
 }

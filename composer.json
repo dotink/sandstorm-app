@@ -24,6 +24,7 @@
 		"dotink/affinity": "dev-master",
 		"dotink/inkwell-core": "dev-master",
 		"vlucas/phpdotenv": "~2.0.0",
+		"filp/whoops": "~1.1.0",
 		"dotink/inkwell-components": "dev-master",
 		"dotink/inkwell-doctrine": "dev-master",
 		"twilio/sdk": "dev-master",
