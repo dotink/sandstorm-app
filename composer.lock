@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "712bfdad8c713e2cff7f2e2da8ad1196",
-    "content-hash": "aa50343b635fafa31208903dbeb8b961",
+    "hash": "94e8e729b375a7ef24284df91ca85a2f",
+    "content-hash": "ef9d778a964d90d88f12c8bb75c6488e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1112,17 +1112,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-core.git",
-                "reference": "fd136a1f57efbf49cfa92c71f727e196cfb1d7a9"
+                "reference": "188cf64d9a27986002bad8b2b397473b9fcd08f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/fd136a1f57efbf49cfa92c71f727e196cfb1d7a9",
-                "reference": "fd136a1f57efbf49cfa92c71f727e196cfb1d7a9",
+                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/188cf64d9a27986002bad8b2b397473b9fcd08f6",
+                "reference": "188cf64d9a27986002bad8b2b397473b9fcd08f6",
                 "shasum": ""
             },
             "require": {
                 "dotink/flourish-core": "^1.0.0",
-                "filp/whoops": "~1.0",
                 "imarc/opus": "^1.0.0",
                 "php": ">=5.4.0"
             },
@@ -1157,7 +1156,7 @@
             "support": {
                 "source": "https://github.com/dotink/inkwell-core/tree/master"
             },
-            "time": "2015-10-18 06:34:50"
+            "time": "2015-10-26 16:43:30"
         },
         {
             "name": "dotink/inkwell-doctrine",
@@ -2575,13 +2574,13 @@
         "rdlowrey/auryn": 20,
         "dotink/affinity": 20,
         "dotink/inkwell-core": 20,
+        "dotink/flourish-messenger": 20,
         "dotink/inkwell-components": 20,
         "dotink/inkwell-doctrine": 20,
-        "twilio/sdk": 20,
+        "imarc/tenet": 20,
         "dotink/inkwell-auth": 20,
         "dotink/inkwell-relay": 20,
-        "imarc/tenet": 20,
-        "dotink/flourish-messenger": 20
+        "twilio/sdk": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

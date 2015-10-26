@@ -25,13 +25,13 @@
 		"dotink/inkwell-core": "dev-master",
 		"vlucas/phpdotenv": "~2.0.0",
 		"filp/whoops": "~1.1.0",
+		"dotink/flourish-messenger": "dev-master",
 		"dotink/inkwell-components": "dev-master",
 		"dotink/inkwell-doctrine": "dev-master",
-		"twilio/sdk": "dev-master",
+		"imarc/tenet": "~2.0@dev",
 		"dotink/inkwell-auth": "dev-master",
 		"dotink/inkwell-relay": "dev-master",
-		"imarc/tenet": "~2.0@dev",
-		"dotink/flourish-messenger": "dev-master"
+		"twilio/sdk": "dev-master"
 	},
 	"autoload": {
 		"classmap": ["user/"]
