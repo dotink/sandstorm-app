@@ -25,8 +25,8 @@
 			//
 
 			'aliases' => [
-					'manage' => ['create', 'remove', 'update', 'select'],
-					'admin'  => ['manage', 'permit']
+				'manage' => ['create', 'remove', 'update', 'select'],
+				'admin'  => ['manage', 'permit']
 			],
 
 			//

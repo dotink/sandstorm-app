@@ -909,12 +909,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-auth.git",
-                "reference": "0100eafd3c045a825f589127738976cacb4cf562"
+                "reference": "e145573d44364cd051200c80e092a75ec2b7a204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-auth/zipball/0100eafd3c045a825f589127738976cacb4cf562",
-                "reference": "0100eafd3c045a825f589127738976cacb4cf562",
+                "url": "https://api.github.com/repos/dotink/inkwell-auth/zipball/e145573d44364cd051200c80e092a75ec2b7a204",
+                "reference": "e145573d44364cd051200c80e092a75ec2b7a204",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +955,7 @@
             "support": {
                 "source": "https://github.com/dotink/inkwell-auth/tree/master"
             },
-            "time": "2015-10-24 07:23:14"
+            "time": "2015-10-26 18:08:04"
         },
         {
             "name": "dotink/inkwell-components",
