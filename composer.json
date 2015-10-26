@@ -23,7 +23,8 @@
 		"rdlowrey/auryn": "dev-master",
 		"dotink/affinity": "dev-master",
 		"dotink/inkwell-core": "dev-master",
-		"vlucas/phpdotenv": "~2.0.0"
+		"vlucas/phpdotenv": "~2.0.0",
+		"filp/whoops": "~1.1.0"
 	},
 	"autoload": {
 		"classmap": ["user/"]

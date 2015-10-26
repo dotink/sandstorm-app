@@ -12,9 +12,8 @@
 		//
 		//
 		//
-		'ERROR\DESTINATION_NULL'     => 'null',
-		'ERROR\DESTINATION_EMAIL'    => 'email',
-		'ERROR\DESTINATION_RESPONSE' => 'response',
+		'ERROR\TARGET_NULL'     => 'null',
+		'ERROR\TARGET_RESPONSE' => 'response',
 
 		//
 		//
