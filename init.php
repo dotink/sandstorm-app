@@ -12,10 +12,6 @@
 
 	use InvalidArgumentException;
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	ini_set('error_reporting', E_ALL);
-
 	//
 	// Autoloading
 	//
@@ -65,7 +61,7 @@
 					$body .= "\n\nSERVER: \n\n" . print_r($_SERVER, TRUE);
 					$body .= "\n\nPOST: \n\n" . print_r($_POST, TRUE);
 					$body .= "\n\nGET: \n\n" . print_r($_GET, TRUE);
-					
+
 					mail(
 						$error_target,
 						sprintf(
@@ -77,7 +73,9 @@
 						$body
 					);
 
+					include(__DIR__ . '/500.php');
 				});
+
 				break;
 		}
 
