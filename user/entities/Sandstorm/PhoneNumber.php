@@ -1,5 +1,5 @@
-<?php namespace Sandstorm {
-
+<?php namespace Sandstorm
+{
 	use iMarc\Auth;
 	use Tenet\AccessInterface;
 	use Tenet\Access\AccessibleTrait;
@@ -7,10 +7,8 @@
 	/**
 	 *
 	 */
-	class PhoneNumber extends Base\PhoneNumber implements Auth\EntityInterface, AccessInterface
+	class PhoneNumber extends Base\PhoneNumber implements Auth\EntityInterface
 	{
-		use AccessibleTrait;
-
 		/**
 		 *
 		 */
@@ -63,5 +61,4 @@
 			parent::setDigits(static::normalize($number));
 		}
 	}
-
 }

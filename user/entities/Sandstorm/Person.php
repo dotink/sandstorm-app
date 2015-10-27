@@ -7,11 +7,8 @@
 	/**
 	 *
 	 */
-	class Person extends Base\Person implements AccessInterface
+	class Person extends Base\Person
 	{
-		use AccessibleTrait;
-
-
 		/**
 		 * Instantiate a new Person
 		 */

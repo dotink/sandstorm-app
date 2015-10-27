@@ -1,16 +1,20 @@
-<?php namespace Sandstorm {
-
+<?php namespace Sandstorm
+{
+	/**
+	 *
+	 */
 	class Organization extends Base\Organization
 	{
-
 		/**
-		 * Instantiate a new Organization
+		 *
 		 */
-		public function __construct()
+		public function setOwner(Person $person)
 		{
-			return parent::__construct();
+			$this->owner = $person;
+
+			if (!$person->getOrganizations()->contains($this)) {
+				$person->getOrganizations()->add($this);
+			}
 		}
-
 	}
-
 }

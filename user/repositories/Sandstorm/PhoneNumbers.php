@@ -10,7 +10,7 @@
 		/**
 		 *
 		 */
-		static public function normalize($number)
+		public function normalize($number)
 		{
 			$model = $this->model;
 

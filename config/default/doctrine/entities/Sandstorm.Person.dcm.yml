@@ -74,6 +74,7 @@ Sandstorm\Person:
 
     organizations:
       targetEntity: Sandstorm\Organization
+      cascade: ["persist"]
       joinTable:
         name: members
         joinColumns:

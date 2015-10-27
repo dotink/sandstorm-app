@@ -1,12 +1,16 @@
 <?php namespace Sandstorm
 {
 	use iMarc\Auth;
+	use Tenet\AccessInterface;
+	use Tenet\Access\AccessibleTrait;
 
 	/**
 	 *
 	 */
-	class Entity implements Auth\AuthInterface
+	class Entity implements Auth\AuthInterface, AccessInterface
 	{
+		use AccessibleTrait;
+
 		/**
 		 *
 		 */
