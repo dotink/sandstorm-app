@@ -83,18 +83,18 @@
 
 			if (isset($_SESSION[static::SESSION_KEY])) {
 				$number = $this->phoneNumbers->find($_SESSION[static::SESSION_KEY]);
+
+				if ($number) {
+					$number->setLoginPhrase(NULL);
+					$this->phoneNumbers->save($number);
+
+				} else {
+					unset($_SESSION[static::SESSION_KEY]);
+
+				}
 			}
 
 			$this->app['auth.init']($number ?: new Auth\AnonymousUser());
-
-			if ($number) {
-				$number->setLoginPhrase(NULL);
-				$this->phoneNumbers->save($number);
-
-			} else {
-				unset($_SESSION[static::SESSION_KEY]);
-
-			}
 
 			if (!$this->checkAccess($request)) {
 
