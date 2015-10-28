@@ -1,11 +1,6 @@
 <?php namespace Sandstorm
 {
 	use IW\HTTP;
-
-	use Inkwell\View;
-	use Inkwell\Auth;
-	use Inkwell\Controller\BaseController;
-
 	use Dotink\Flourish;
 
 	use Sandstorm\Security\Authorization;
@@ -13,48 +8,13 @@
 	/**
 	 * The account controller is responsible for entry points for account access and settings
 	 */
-	class AccountController extends BaseController implements Auth\ConsumerInterface
+	class AccountController extends Controller
 	{
-		use Auth\StandardConsumer;
-
 		const MSG_NO_NUMBER = 'You must enter a telephone number to begin.';
 		const MSG_INIT      = 'You should receive a text with your passphrase momentarily.';
 		const MSG_PROBLEM   = 'There was a probem trying to send the passphrase.  Try again later.';
 		const MSG_INCORRECT = 'The passphrase you entered was incorrect, please try again.';
 		const MSG_THANKS    = 'Thanks, make sure to come back if you need to update your info.';
-
-		/**
-		 * The messenger, capable of sending messages across requests
-		 *
-		 * @access protected
-		 * @var Flourish\Messenger
-		 */
-		protected $messenger;
-
-		/**
-		 * A view object to render templates
-		 *
-		 * @access protected
-		 * @var View
-		 */
-		protected $view;
-
-
-		/**
-		 * Instantiate the AccountController
-		 *
-		 * @access pubic
-		 * @param Messenger $messenger The messenger, capable of sending messages across requests
-		 * @param View $view A view object to render templates
-		 * @return void
-		 */
-		public function __construct(View $view, Flourish\Messenger $messenger)
-		{
-			$this->view      = $view;
-			$this->messenger = $messenger;
-
-			$this->view->set('messenger', $messenger);
-		}
 
 
 		/**
@@ -155,17 +115,6 @@
 			}
 
 			return $this->view->load('account/login.html', ['number' => $number]);
-		}
-
-
-		/**
-		 *
-		 */
-		public function prepare($action, $context = array())
-		{
-			$this->view->set('auth', $this->auth);
-
-			parent::prepare($action, $context);
 		}
 
 

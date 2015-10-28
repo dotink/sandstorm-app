@@ -1,4 +1,4 @@
-<?php
+<?php namespace Inkwell\HTML;
 
 	$this->expand('content', 'master.html');
 

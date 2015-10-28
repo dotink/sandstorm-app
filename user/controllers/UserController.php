@@ -6,14 +6,14 @@
 	/**
 	 * The account controller is responsible for entry points for account access and settings
 	 */
-	class DashboardController extends Controller
+	class UserController extends Controller
 	{
 		/**
 		 *
 		 */
-		public function main(Profile $profile)
+		public function organizations(Profile $profile)
 		{
-			return $this->view->load('dashboard/index.html', [
+			return $this->view->load('user/organizations.html', [
 				'person' => $profile->getPerson()
 			]);
 		}

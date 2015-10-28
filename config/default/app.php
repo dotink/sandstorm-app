@@ -40,7 +40,7 @@
 		],
 
 		//
-		// Global routing configuration
+		// Routing configuration
 		//
 
 		'@routes' => [
@@ -57,13 +57,25 @@
 			//
 
 			'links' => [
-				'/'                => 'Sandstorm\AccountController::enter',
-				'/login'           => 'Sandstorm\AccountController::login',
-				'/profile'         => 'Sandstorm\AccountController::profile',
-				'/create'          => 'Sandstorm\AccountController::create',
-				'/dashboard'       => 'Sandstorm\DashboardController::main',
-				'/user/[!:method]' => 'Sandstorm\UserController::[lc:method]', // actions, organizations
-				'/[(.*):path]'     => 'Sandstorm\MainController::page'
+				'/'                          => 'Sandstorm\AccountController::enter',
+				'/login'                     => 'Sandstorm\AccountController::login',
+				'/profile'                   => 'Sandstorm\AccountController::profile',
+				'/create'                    => 'Sandstorm\AccountController::create',
+				'/dashboard'                 => 'Sandstorm\DashboardController::main',
+				'/user/[$:method]/'          => 'Sandstorm\UserController::[lc:method]',
+				'/[$:class]/'                => 'Sandstorm\[uc:class]Controller::manage',
+				'/[$:class]/[+:id]-[!:slug]' => 'Sandstorm\[uc:class]Controller::select',
+				'/[(.*):path]'               => 'Sandstorm\MainController::page'
+			],
+
+			//
+			//
+			//
+
+			'hrefs' => [
+				'Sandstorm\Organization' => [
+					'view' => '/organizations/[id]-[ws:name]'
+				]
 			],
 
 			//

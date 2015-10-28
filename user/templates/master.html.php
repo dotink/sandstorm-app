@@ -35,6 +35,9 @@
 				<nav>
 					<ul>
 						<li><a href="/profile">Your Profile</a></li>
+						<?php if ($this('auth')->can('create', 'Sandstorm\Action')) { ?>
+							<li><a href="/user/actions/">Actions</a></li>
+						<?php } ?>
 						<?php if ($this('auth')->can('create', 'Sandstorm\Organization')) { ?>
 							<li><a href="/user/organizations/">Organizations</a></li>
 						<?php } ?>

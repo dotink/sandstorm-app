@@ -1,34 +1,13 @@
 <?php namespace Sandstorm
 {
 	use IW\HTTP;
-
-	use Inkwell\Controller\BaseController;
-	use Inkwell\View;
-
 	use Dotink\Flourish;
 
 	/**
 	 * A main/fallback and error controller
 	 */
-	class MainController extends BaseController
+	class MainController extends Controller
 	{
-		/**
-		 * A view object to render templates
-		 *
-		 * @access protected
-		 * @var View
-		 */
-		protected $view;
-
-		/**
-		 *
-		 */
-		public function __construct(View $view)
-		{
-			$this->view = $view;
-		}
-
-
 		/**
 		 * Handle not found responses
 		 *

@@ -4,7 +4,7 @@
 
 	?>
 	<section role="main">
-		<form class="profile" method="post" action="/profile">
+		<form class="entity profile" method="post" action="/profile">
 			<legend>Tell us a little bit about yourself</legend>
 
 			<label>
