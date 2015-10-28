@@ -7,6 +7,12 @@
 	{
 		/**
 		 * @access protected
+		 * @var \DateTime
+		 */
+		protected $dateCreated;
+
+		/**
+		 * @access protected
 		 * @var string
 		 */
 		protected $description;
@@ -48,6 +54,18 @@
 		public function __construct()
 		{
 			$this->leaders = new ArrayCollection();
+		}
+
+
+		/**
+		 * Get the value of dateCreated
+		 *
+		 * @access public
+		 * @return \DateTime The value of dateCreated
+		 */
+		public function getDateCreated()
+		{
+			return $this->dateCreated;
 		}
 
 
@@ -120,6 +138,21 @@
 		public function getPrimaryAccount()
 		{
 			return $this->primaryAccount;
+		}
+
+
+		/**
+		 * Set the value of dateCreated
+		 *
+		 * @access public
+		 * @param \DateTime $value The value to set to dateCreated
+		 * @return Organization The object instance for method chaining
+		 */
+		public function setDateCreated($value)
+		{
+			$this->dateCreated = $value;
+
+			return $this;
 		}
 
 

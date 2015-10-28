@@ -16,6 +16,9 @@ Sandstorm\Organization:
     description:
       column: description
       type: text
+    dateCreated:
+      column: date_created
+      type: date
 
   manyToOne:
     owner:
