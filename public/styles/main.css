@@ -93,3 +93,19 @@ a:active {
 .success {
 	color: #718A5C;
 }
+
+
+.crud {
+	margin-bottom: 2rem;
+	text-align: left;
+}
+
+	.crud > div {
+		margin-bottom: 1rem;
+		padding: 2rem;
+		border: solid 1px #ccc;
+	}
+
+	.crud h2 {
+		font-size: 1.6rem;
+	}

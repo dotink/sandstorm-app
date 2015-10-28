@@ -4,7 +4,8 @@ label {
 	text-align: inherit;
 }
 
-input {
+input,
+textarea {
 	width: 100%;
 	box-sizing: border-box;
 	width: 100%;
@@ -82,6 +83,6 @@ form {
 	text-align: center;
 }
 
-form.profile {
+form.entity {
 	text-align: left;
 }
