@@ -5,7 +5,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
 	width: 100%;
 	box-sizing: border-box;
 	width: 100%;
@@ -85,4 +86,21 @@ form {
 
 form.entity {
 	text-align: left;
+}
+
+fieldset.range.group {
+	margin-bottom: 0;
+}
+
+fieldset.range.group > legend {
+	margin-left: 0;
+}
+
+fieldset.range.group > label {
+	width: calc(50% - 4rem + (4rem / 4));
+}
+
+fieldset.range.group > label:nth-child(2n+2) {
+	margin-left: 0;
+	clear: left;
 }
