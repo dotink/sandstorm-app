@@ -25,6 +25,18 @@
 
 		/**
 		 * @access protected
+		 * @var \DateTime
+		 */
+		protected $endDate;
+
+		/**
+		 * @access protected
+		 * @var \DateTime
+		 */
+		protected $endTime;
+
+		/**
+		 * @access protected
 		 * @var integer
 		 */
 		protected $id;
@@ -46,6 +58,24 @@
 		 * @var string
 		 */
 		protected $name;
+
+		/**
+		 * @access protected
+		 * @var Sandstorm\Organization
+		 */
+		protected $organization;
+
+		/**
+		 * @access protected
+		 * @var \DateTime
+		 */
+		protected $startDate;
+
+		/**
+		 * @access protected
+		 * @var \DateTime
+		 */
+		protected $startTime;
 
 		/**
 		 * @access protected
@@ -108,6 +138,30 @@
 
 
 		/**
+		 * Get the value of endDate
+		 *
+		 * @access public
+		 * @return \DateTime The value of endDate
+		 */
+		public function getEndDate()
+		{
+			return $this->endDate;
+		}
+
+
+		/**
+		 * Get the value of endTime
+		 *
+		 * @access public
+		 * @return \DateTime The value of endTime
+		 */
+		public function getEndTime()
+		{
+			return $this->endTime;
+		}
+
+
+		/**
 		 * Get the value of id
 		 *
 		 * @access public
@@ -156,6 +210,42 @@
 
 
 		/**
+		 * Get the value of organization
+		 *
+		 * @access public
+		 * @return Sandstorm\Organization The value of organization
+		 */
+		public function getOrganization()
+		{
+			return $this->organization;
+		}
+
+
+		/**
+		 * Get the value of startDate
+		 *
+		 * @access public
+		 * @return \DateTime The value of startDate
+		 */
+		public function getStartDate()
+		{
+			return $this->startDate;
+		}
+
+
+		/**
+		 * Get the value of startTime
+		 *
+		 * @access public
+		 * @return \DateTime The value of startTime
+		 */
+		public function getStartTime()
+		{
+			return $this->startTime;
+		}
+
+
+		/**
 		 * Get the value of type
 		 *
 		 * @access public
@@ -195,6 +285,36 @@
 
 
 		/**
+		 * Set the value of endDate
+		 *
+		 * @access public
+		 * @param \DateTime $value The value to set to endDate
+		 * @return Action The object instance for method chaining
+		 */
+		public function setEndDate($value)
+		{
+			$this->endDate = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of endTime
+		 *
+		 * @access public
+		 * @param \DateTime $value The value to set to endTime
+		 * @return Action The object instance for method chaining
+		 */
+		public function setEndTime($value)
+		{
+			$this->endTime = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of id
 		 *
 		 * @access public
@@ -219,6 +339,36 @@
 		public function setName($value)
 		{
 			$this->name = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of startDate
+		 *
+		 * @access public
+		 * @param \DateTime $value The value to set to startDate
+		 * @return Action The object instance for method chaining
+		 */
+		public function setStartDate($value)
+		{
+			$this->startDate = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of startTime
+		 *
+		 * @access public
+		 * @param \DateTime $value The value to set to startTime
+		 * @return Action The object instance for method chaining
+		 */
+		public function setStartTime($value)
+		{
+			$this->startTime = $value;
 
 			return $this;
 		}

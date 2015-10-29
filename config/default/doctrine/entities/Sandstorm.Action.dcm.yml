@@ -17,6 +17,19 @@ Sandstorm\Action:
     description:
       column: description
       type: string
+    startDate:
+      column: start_date
+      type: date
+    startTime:
+      column: start_time
+      type: time
+    endDate:
+      column: end_date
+      type: date
+    endTime:
+      column: end_time
+      type: time
+
 
   manyToOne:
     type:
@@ -39,6 +52,13 @@ Sandstorm\Action:
         name: location
         referencedColumnName: id
         onDelete: SET NULL
+
+    organization:
+      targetEntity: Sandstorm\Organization
+      joinColumn:
+        name: organization
+        referencedColumnName: id
+        onDelete: CASCADE
 
   manyToMany:
     volunteers:

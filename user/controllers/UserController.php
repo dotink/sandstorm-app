@@ -11,6 +11,16 @@
 		/**
 		 *
 		 */
+		public function actions(Profile $profile)
+		{
+			return $this->view->load('user/actions.html', [
+				'person' => $profile->getPerson()
+			]);
+		}
+
+		/**
+		 *
+		 */
 		public function organizations(Profile $profile)
 		{
 			return $this->view->load('user/organizations.html', [
