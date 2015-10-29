@@ -73,7 +73,9 @@
 				$this->router->redirect(NULL);
 			}
 
-			return $this->view->load('organizations/add.html');
+			return $this->view->load('organizations/add.html', [
+				'organization' => $organization
+			]);
 		}
 	}
 }
