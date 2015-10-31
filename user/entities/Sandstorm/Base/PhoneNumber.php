@@ -150,6 +150,21 @@
 
 
 		/**
+		 * Set the value of person
+		 *
+		 * @access public
+		 * @param Sandstorm\Person $value The value to set to person
+		 * @return PhoneNumber The object instance for method chaining
+		 */
+		public function setPerson(\Sandstorm\Person $value)
+		{
+			$this->person = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of type
 		 *
 		 * @access public

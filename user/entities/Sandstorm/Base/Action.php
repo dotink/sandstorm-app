@@ -330,6 +330,36 @@
 
 
 		/**
+		 * Set the value of leader
+		 *
+		 * @access public
+		 * @param Sandstorm\Person $value The value to set to leader
+		 * @return Action The object instance for method chaining
+		 */
+		public function setLeader(\Sandstorm\Person $value)
+		{
+			$this->leader = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of location
+		 *
+		 * @access public
+		 * @param Sandstorm\Location $value The value to set to location
+		 * @return Action The object instance for method chaining
+		 */
+		public function setLocation(\Sandstorm\Location $value)
+		{
+			$this->location = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of name
 		 *
 		 * @access public
@@ -339,6 +369,21 @@
 		public function setName($value)
 		{
 			$this->name = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of organization
+		 *
+		 * @access public
+		 * @param Sandstorm\Organization $value The value to set to organization
+		 * @return Action The object instance for method chaining
+		 */
+		public function setOrganization(\Sandstorm\Organization $value)
+		{
+			$this->organization = $value;
 
 			return $this;
 		}
@@ -369,6 +414,21 @@
 		public function setStartTime($value)
 		{
 			$this->startTime = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of type
+		 *
+		 * @access public
+		 * @param Sandstorm\ActionType $value The value to set to type
+		 * @return Action The object instance for method chaining
+		 */
+		public function setType(\Sandstorm\ActionType $value)
+		{
+			$this->type = $value;
 
 			return $this;
 		}

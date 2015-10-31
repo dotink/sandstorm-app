@@ -200,6 +200,36 @@
 			return $this;
 		}
 
+
+		/**
+		 * Set the value of owner
+		 *
+		 * @access public
+		 * @param Sandstorm\Person $value The value to set to owner
+		 * @return Organization The object instance for method chaining
+		 */
+		public function setOwner(\Sandstorm\Person $value)
+		{
+			$this->owner = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of primaryAccount
+		 *
+		 * @access public
+		 * @param Sandstorm\Account $value The value to set to primaryAccount
+		 * @return Organization The object instance for method chaining
+		 */
+		public function setPrimaryAccount(\Sandstorm\Account $value)
+		{
+			$this->primaryAccount = $value;
+
+			return $this;
+		}
+
 	}
 
 }

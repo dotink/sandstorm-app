@@ -178,6 +178,36 @@
 
 
 		/**
+		 * Set the value of account
+		 *
+		 * @access public
+		 * @param Sandstorm\Account $value The value to set to account
+		 * @return Deposit The object instance for method chaining
+		 */
+		public function setAccount(\Sandstorm\Account $value)
+		{
+			$this->account = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of action
+		 *
+		 * @access public
+		 * @param Sandstorm\Action $value The value to set to action
+		 * @return Deposit The object instance for method chaining
+		 */
+		public function setAction(\Sandstorm\Action $value)
+		{
+			$this->action = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of amount
 		 *
 		 * @access public
@@ -247,6 +277,21 @@
 		public function setId($value)
 		{
 			$this->id = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of organizer
+		 *
+		 * @access public
+		 * @param Sandstorm\Person $value The value to set to organizer
+		 * @return Deposit The object instance for method chaining
+		 */
+		public function setOrganizer(\Sandstorm\Person $value)
+		{
+			$this->organizer = $value;
 
 			return $this;
 		}

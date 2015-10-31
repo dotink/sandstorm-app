@@ -135,6 +135,21 @@
 			return $this;
 		}
 
+
+		/**
+		 * Set the value of organization
+		 *
+		 * @access public
+		 * @param Sandstorm\Organization $value The value to set to organization
+		 * @return Account The object instance for method chaining
+		 */
+		public function setOrganization(\Sandstorm\Organization $value)
+		{
+			$this->organization = $value;
+
+			return $this;
+		}
+
 	}
 
 }

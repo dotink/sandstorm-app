@@ -490,6 +490,21 @@
 
 
 		/**
+		 * Set the value of primaryPhoneNumber
+		 *
+		 * @access public
+		 * @param Sandstorm\PhoneNumber $value The value to set to primaryPhoneNumber
+		 * @return Person The object instance for method chaining
+		 */
+		public function setPrimaryPhoneNumber(\Sandstorm\PhoneNumber $value)
+		{
+			$this->primaryPhoneNumber = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of state
 		 *
 		 * @access public

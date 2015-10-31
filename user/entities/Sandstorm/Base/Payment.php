@@ -135,6 +135,36 @@
 
 
 		/**
+		 * Set the value of deposit
+		 *
+		 * @access public
+		 * @param Sandstorm\Deposit $value The value to set to deposit
+		 * @return Payment The object instance for method chaining
+		 */
+		public function setDeposit(\Sandstorm\Deposit $value)
+		{
+			$this->deposit = $value;
+
+			return $this;
+		}
+
+
+		/**
+		 * Set the value of expense
+		 *
+		 * @access public
+		 * @param Sandstorm\Expense $value The value to set to expense
+		 * @return Payment The object instance for method chaining
+		 */
+		public function setExpense(\Sandstorm\Expense $value)
+		{
+			$this->expense = $value;
+
+			return $this;
+		}
+
+
+		/**
 		 * Set the value of id
 		 *
 		 * @access public
