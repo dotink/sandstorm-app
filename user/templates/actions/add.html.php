@@ -60,6 +60,7 @@
 				<textarea name="description" cols="60" rows="15" required><?= $this('action.description') ?></textarea>
 			</label>
 
+			<input type="hidden" name="location" value="<?= $this('location.id') ?>" />
 			<button type="submit">Save</button>
 		</form>
 	</section>

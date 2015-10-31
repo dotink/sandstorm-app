@@ -25,22 +25,15 @@
 			PhoneNumbers $phone_numbers,
 			PersonTypes $person_types,
 			ActionTypes $action_types,
-			Accessor $accessor
+			Accessor $accessor,
+			Locator $locator
 		) {
 			$this->people       = $people;
 			$this->actionTypes  = $action_types;
 			$this->personTypes  = $person_types;
 			$this->phoneNumbers = $phone_numbers;
 			$this->accessor     = $accessor;
-		}
-
-
-		/**
-		 *
-		 */
-		public function getActionTypes()
-		{
-			return $this->actionTypes->findAll();
+			$this->locator      = $locator;
 		}
 
 
@@ -75,11 +68,21 @@
 				);
 			}
 
-			if (!$person->getRoles()->contains($user_role)) {
+			if ($user_role && !$person->getRoles()->contains($user_role)) {
 				$person->getRoles()->add($user_role);
 			}
 
+			$this->updateLocationData($person);
 			$this->people->save($person);
+		}
+
+
+		/**
+		 *
+		 */
+		public function getActionTypes()
+		{
+			return $this->actionTypes->findAll();
 		}
 
 
@@ -113,16 +116,30 @@
 		public function update($data)
 		{
 			$person    = $this->getPerson();
+			$location  = $person->makeLocation();
 			$user_role = $this->personTypes->findOneByName('user');
 
 			$this->accessor->fill($person, $data);
 			$this->accessor->fill($this->auth->entity, ['person' => $person]);
 
-			if (!$person->getRoles()->contains($user_role)) {
+			if ($user_role && !$person->getRoles()->contains($user_role)) {
 				$person->getRoles()->add($user_role);
 			}
 
+			if (!$person->getLatitude() || !$person->getLongitude() || $location != $person->makeLocation()) {
+				$this->updateLocationData($person);
+			}
+
 			$this->people->save($person);
+		}
+
+
+		/**
+		 *
+		 */
+		protected function updateLocationData($person)
+		{
+			$this->locator->update($person);
 		}
 	}
 }

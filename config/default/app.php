@@ -99,12 +99,13 @@
 
 			'permissions' => [
 				'User' => [
-					'Sandstorm\Organization' => ['manage']
+					'Sandstorm\Organization' => ['manage'],
+					'Sandstorm\Action'       => ['manage']
 				],
 
 				'Admin' => [
 
 				]
 			]
-		]
+		],
 	]);

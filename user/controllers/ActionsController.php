@@ -16,12 +16,12 @@
 		/**
 		 *
 		 */
-		public function manage(Actions $actions, ActionTypes $action_types, Accessor $accessor)
+		public function manage(Actions $actions, ActionTypes $action_types, Locations $locations, Accessor $accessor)
 		{
 			$action = $this->request->params->get('action', 'index');
 
 			if (in_array($action, ['add'])) {
-				return $this->$action($actions, $action_types, $accessor);
+				return $this->$action($actions, $action_types, $locations, $accessor);
 			}
 
 			return $this->view->load('actions/index.html');
@@ -31,13 +31,30 @@
 		/**
 		 *
 		 */
-		protected function add(Actions $actions, ActionTypes $action_types, Accessor $accessor)
+		protected function add(Actions $actions, ActionTypes $action_types, Locations $locations, Accessor $accessor)
 		{
+			extract($this->request->params->get([
+				'location',
+				'postal_code'
+			]));
+
+			if (!$location) {
+				if (!$postal_code) {
+					return $this->view->load('actions/find-location.html');
+				}
+
+				return $this->view->load('actions/select-location.html', [
+					'locations' => $locations->findByPostalCode($postal_code)
+				]);
+			}
+
 			$action = $actions->create();
 
 			if ($this->request->checkMethod(HTTP\POST)) {
 				$accessor->fill($action, $this->request->params->get());
-				$organization->setLeader($this->auth->entity->getPerson());
+				$action->setLeader($this->auth->entity->getPerson());
+
+				$actions->save($action);
 
 				$this->messenger->record('success', self::MSG_CREATED);
 
@@ -47,7 +64,8 @@
 			return $this->view->load('actions/add.html', [
 				'action'       => $action,
 				'action_types' => $action_types->findAll(),
-				'person'       => $this->auth->entity->getPerson()
+				'location'     => $locations->find($location),
+				'person'       => $this->auth->entity->getPerson(),
 			]);
 		}
 	}

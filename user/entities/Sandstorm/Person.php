@@ -7,7 +7,7 @@
 	/**
 	 *
 	 */
-	class Person extends Base\Person
+	class Person extends Base\Person implements Addressable
 	{
 		/**
 		 * Instantiate a new Person
@@ -26,6 +26,28 @@
 		public function hasInterest(ActionType $action_type)
 		{
 			return $this->getInterests()->contains($action_type);
+		}
+
+
+		/**
+		 *
+		 */
+		public function makeLocation()
+		{
+			$location  = $this->getAddressLine1();
+			$location .= ' ' . $this->getAddressLine2();
+
+			if ($this->getCity()) {
+				$location .= ', ' . $this->getCity();
+			}
+
+			if ($this->getState()) {
+				$location .= ', ' .  $this->getState();
+			}
+
+			$location .= ' ' . $this->getPostalCode();
+
+			return trim($location);
 		}
 
 
