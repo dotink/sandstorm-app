@@ -14,15 +14,8 @@
 				]
 			],
 
-			//
-			// The provider mapping lists concrete class providers for given interfaces, the
-			// interface is the key, while the class is the value.  In the setup below if
-			// the broker is tasked with creating an EntityInterface, it will use the
-			// AnonymousUser.
-			//
 
 			'mapping' => [
-				'iMarc\Auth\EntityInterface'                => 'Inkwell\Auth\AnonymousUser',
 				'Doctrine\Common\Persistence\ObjectManager' => 'Doctrine\ORM\EntityManager'
 			]
 		],

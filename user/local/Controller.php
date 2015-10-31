@@ -9,7 +9,7 @@
 	use Dotink\Flourish;
 
 	/**
-	 * The account controller is responsible for entry points for account access and settings
+	 * A core controller which provides standard services used almost everywhere
 	 */
 	class Controller extends BaseController implements Auth\ConsumerInterface
 	{
@@ -34,7 +34,7 @@
 
 
 		/**
-		 * Instantiate the AccountController
+		 * Instantiate the Controller
 		 *
 		 * @access public
 		 * @param Messenger $messenger The messenger, capable of sending messages across requests
@@ -45,19 +45,25 @@
 		{
 			$this->view      = $view;
 			$this->messenger = $messenger;
-
-			$this->view->set('messenger', $messenger);
 		}
 
 
 		/**
+		 * The prepare method is called post-instantiation and sets up common services
 		 *
+		 * @access public
+		 * @param string $action The name of the action (method) being executed
+		 * @param array $context The gateway context including request, response, and router
+		 * @return void
 		 */
 		public function prepare($action, $context = array())
 		{
-			$this->view->set('auth', $this->auth);
-
 			parent::prepare($action, $context);
+
+			$this->view->set([
+				'auth'      => $this->auth,
+				'messenger' => $this->messenger
+			]);
 		}
 	}
 }
