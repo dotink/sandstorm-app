@@ -11,12 +11,13 @@
 			</p>
 		</div>
 		<form class="entity action" method="get" action="/actions/">
+			<input type="hidden" name="action" value="add" />
+
 			<label>
 				Postal Code
 				<input type="text" name="postal_code" required />
 			</label>
 
-			<input type="hidden" name="action" value="add" />
 			<button type="submit">Find Locations</button>
 		</form>
 	</section>

@@ -10,14 +10,18 @@
 		</p>
 		<form class="entity action" method="get" action="/actions/">
 			<?php if (count($this('locations'))) { ?>
-				<?php html::per($this('locations'), $this(function($i, $location) { ?>
-					<label>
-						<?= $this('location.name') ?>
-						<input type="radio" name="location" value="<?= $this('location.id') ?>" />
-					</label>
-				<?php })) ?>
-
 				<input type="hidden" name="action" value="add" />
+
+				<fieldset class="options">
+					<?php html::per($this('locations'), $this(function($i, $location) { ?>
+						<label>
+							<span class="identifier"><?= $this('location.name') ?></span>
+							<span><?= $this('location')->makeLocation() ?></span>
+							<input type="radio" name="location" value="<?= $this('location.id') ?>" required />
+						</label>
+					<?php })) ?>
+				</fieldset>
+
 				<button type="submit">Create Action Here</button>
 
 			<?php } else { ?>

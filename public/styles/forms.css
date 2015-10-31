@@ -40,6 +40,9 @@ legend {
 	border-radius: .25rem;
 }
 
+label .identifier {
+	font-weight: bold;
+}
 
 label.option {
 	width: 100%;
@@ -79,6 +82,44 @@ label.option {
 	label.option input[type=checkbox]:checked + span::before {
 		color: #fff;
 	}
+
+/*
+ *
+ */
+
+.options > label {
+	position: relative;
+	overflow: hidden;
+	float: left;
+}
+.options > label span {
+	display: block;
+	position: relative;
+	z-index: 1;
+}
+.options > label input[type=radio],
+.options > label input[type=checkbox] {
+	position: absolute;
+	top: -30px;
+	left: -30px;
+	outline: solid 600px transparent;
+	z-index: 0;
+}
+/*
+ * Layout and Theme
+ */
+.options > label {
+	width: 100%;
+	outline: solid 1px #aaa;
+	line-height: 2em;
+	text-align: center;
+	cursor: pointer;
+}
+
+.options > label input[type=radio]:checked,
+.options > label input[type=checkbox]:checked {
+	outline-color: #E6E5DD;
+}
 
 form {
 	text-align: center;

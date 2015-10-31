@@ -31,6 +31,37 @@
 		/**
 		 *
 		 */
+		public function select(Actions $actions, Accessor $accessor)
+		{
+			$id     = $this->request->params->get('id');
+			$slug   = $this->request->params->get('slug');
+			$entity = $actions->find($id);
+
+			if (!$entity) {
+				$this->response->setStatus(HTTP\NOT_FOUND);
+				$this->router->demit();
+			}
+
+			$current_path   = $this->request->getURI()->getPath();
+			$canonical_slug = $this->router->anchor('[ws:name]', [
+				'name' => $entity->getName()
+			]);
+
+			if ($canonical_slug != $slug) {
+				$this->router->redirect([
+					'path' => str_replace($slug, $canonical_slug, $current_path)
+				]);
+			}
+
+			return $this->view->load('actions/view.html', [
+				'action' => $entity
+			]);
+		}
+
+
+		/**
+		 *
+		 */
 		protected function add(Actions $actions, ActionTypes $action_types, Locations $locations, Accessor $accessor)
 		{
 			extract($this->request->params->get([
@@ -54,11 +85,16 @@
 				$accessor->fill($action, $this->request->params->get());
 				$action->setLeader($this->auth->entity->getPerson());
 
-				$actions->save($action);
+				$actions->save($action, TRUE);
 
 				$this->messenger->record('success', self::MSG_CREATED);
 
-				$this->router->redirect(NULL);
+				$this->router->redirect(
+					$this->router->anchor('/actions/[id]-[ws:slug]', [
+						'id'   => $action->getId(),
+						'slug' => $action->getName()
+					])
+				);
 			}
 
 			return $this->view->load('actions/add.html', [
