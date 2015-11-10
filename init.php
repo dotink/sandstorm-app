@@ -98,7 +98,7 @@
 
 	$app['broker'] = $broker;
 	$app['loader'] = $loader;
-	$app['engine'] = new Affinity\Engine(
+	$app['engine'] = new DefaultEngine(
 		new Affinity\NativeDriver($config_dir),
 		new Affinity\NativeDriver($action_dir)
 	);
