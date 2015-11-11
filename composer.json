@@ -21,7 +21,7 @@
 	"require": {
 		"php": ">=5.4.0",
 		"rdlowrey/auryn": "~1.0.0",
-		"dotink/affinity": "~1.1.0",
+		"dotink/affinity": "~1.2.0",
 		"dotink/inkwell-core": "~1.0.0",
 		"vlucas/phpdotenv": "~2.0.0",
 		"filp/whoops": "~1.1.0"
