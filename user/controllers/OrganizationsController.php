@@ -13,6 +13,7 @@
 		const MSG_CREATED = 'The organization has been successfully created.';
 		const MSG_JOIN_SUCCESS = 'You have successfully joined this organization';
 		const MSG_LEAVE_SUCCESS = 'You have successfully left this organization';
+		const MSG_SAVED = 'This organization has been successfully saved.';
 
 		/**
 		 *
@@ -106,7 +107,7 @@
 				$accessor->fill($organization, $this->request->params->get());
 				$organization->setOwner($this->auth->entity->getPerson());
 
-				$this->messenger->record('success', self::MSG_CREATED);
+				$this->messenger->record('success', self::MSG_SAVED);
 
 				$this->router->redirect(NULL);
 			}
