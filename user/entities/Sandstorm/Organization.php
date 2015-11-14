@@ -21,6 +21,24 @@
 		/**
 		 *
 		 */
+		public function isOwner(Person $person)
+		{
+			return $this->owner === $person;
+		}
+
+
+		/**
+		 *
+		 */
+		public function removeOwner()
+		{
+			$this->owner = NULL;
+		}
+
+
+		/**
+		 *
+		 */
 		public function setOwner(Person $person)
 		{
 			$this->owner = $person;

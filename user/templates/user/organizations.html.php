@@ -9,7 +9,12 @@
 			<div class="crud">
 				<?php html::per($this('person.organizations'), $this(function($i, $organization) { ?>
 					<div class="organization">
-						<h2><?= $this('organization.name') ?></h2>
+						<h2 class="name">
+							<a href="<?= html::anchor('/organizations/[id]-[ws:name]', [
+								'id'   => $organization->getId(),
+								'name' => $organization->getName()
+							]) ?>"><?= $this('organization.name') ?></a>
+						</h2>
 					</div>
 				<?php })); ?>
 			</div>

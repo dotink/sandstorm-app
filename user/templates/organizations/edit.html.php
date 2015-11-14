@@ -4,9 +4,9 @@
 
 	?>
 	<section role="main">
-		<h1>Create an Organization</h1>
+		<h1>Edit <?= $this('organization.name') ?></h1>
 		<form class="entity organization" method="post">
 			<?php $this->inject('organizations/fields.html') ?>
-			<button type="submit">Create</button>
+			<button type="submit">Save</button>
 		</form>
 	</section>

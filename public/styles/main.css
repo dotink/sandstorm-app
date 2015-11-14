@@ -110,3 +110,12 @@ button {
 	.crud h2 {
 		font-size: 1.6rem;
 	}
+
+
+.organization {
+
+}
+
+	.organization .description {
+		margin-bottom: 2rem;
+	}

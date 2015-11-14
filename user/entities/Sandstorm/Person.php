@@ -32,6 +32,44 @@
 		/**
 		 *
 		 */
+		public function isMember(Organization $organization)
+		{
+			return (
+				$organization->getOwner() === $this
+				|| $this->getOrganizations()->contains($organization)
+			);
+		}
+
+
+		/**
+		 *
+		 */
+		public function joinOrganization(Organization $organization)
+		{
+			if (!$this->getOrganizations()->contains($organization)) {
+				$this->getOrganizations()->add($organization);
+			}
+		}
+
+
+		/**
+		 *
+		 */
+		public function leaveOrganization(Organization $organization)
+		{
+			if ($this === $organization->getOwner()) {
+				$organization->removeOwner();
+			}
+
+			if ($this->getOrganizations()->contains($organization)) {
+				$this->getOrganizations()->removeElement($organization);
+			}
+		}
+
+
+		/**
+		 *
+		 */
 		public function makeLocation()
 		{
 			$location  = $this->getAddressLine1();
