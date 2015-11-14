@@ -31,7 +31,8 @@
 		"imarc/tenet": "~2.0@dev",
 		"dotink/inkwell-auth": "dev-master",
 		"dotink/inkwell-relay": "dev-master",
-		"twilio/sdk": "dev-master"
+		"twilio/sdk": "dev-master",
+		"cebe/markdown": "~1.1.0"
 	},
 	"autoload": {
 		"classmap": ["user/"]

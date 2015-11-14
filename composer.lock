@@ -4,9 +4,69 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94e8e729b375a7ef24284df91ca85a2f",
-    "content-hash": "ef9d778a964d90d88f12c8bb75c6488e",
+    "hash": "0ca242651c9919a332993cb0c8dd79da",
+    "content-hash": "b419d7c6835ede25d56a9d8521b016ee",
     "packages": [
+        {
+            "name": "cebe/markdown",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/markdown.git",
+                "reference": "54a2c49de31cc44e864ebf0500a35ef21d0010b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/54a2c49de31cc44e864ebf0500a35ef21d0010b2",
+                "reference": "54a2c49de31cc44e864ebf0500a35ef21d0010b2",
+                "shasum": ""
+            },
+            "require": {
+                "lib-pcre": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "cebe/indent": "*",
+                "facebook/xhprof": "*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "bin": [
+                "bin/markdown"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "cebe\\markdown\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Creator"
+                }
+            ],
+            "description": "A super fast, highly extensible markdown parser for PHP",
+            "homepage": "https://github.com/cebe/markdown#readme",
+            "keywords": [
+                "extensible",
+                "fast",
+                "gfm",
+                "markdown",
+                "markdown-extra"
+            ],
+            "time": "2015-03-06 05:28:07"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -110,16 +170,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "v1.5.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "eb8a73619af4f1c8711e2ce482f5de3643258a1f"
+                "reference": "2b9cec5a5e722010cbebc91713d4c11eaa064d5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/eb8a73619af4f1c8711e2ce482f5de3643258a1f",
-                "reference": "eb8a73619af4f1c8711e2ce482f5de3643258a1f",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/2b9cec5a5e722010cbebc91713d4c11eaa064d5e",
+                "reference": "2b9cec5a5e722010cbebc91713d4c11eaa064d5e",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +236,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-10-28 11:27:45"
+            "time": "2015-11-02 18:35:48"
         },
         {
             "name": "doctrine/collections",
@@ -390,16 +450,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +471,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -453,7 +513,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2014-12-20 21:24:13"
+            "time": "2015-11-06 14:35:42"
         },
         {
             "name": "doctrine/instantiator",
@@ -642,16 +702,16 @@
         },
         {
             "name": "dotink/affinity",
-            "version": "dev-master",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/affinity.git",
-                "reference": "762307b93a8dc9eba6cf16ec9f400e38a6745085"
+                "reference": "70beeb798069ec79a9bc357055a15e02d6305e5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/affinity/zipball/762307b93a8dc9eba6cf16ec9f400e38a6745085",
-                "reference": "762307b93a8dc9eba6cf16ec9f400e38a6745085",
+                "url": "https://api.github.com/repos/dotink/affinity/zipball/70beeb798069ec79a9bc357055a15e02d6305e5b",
+                "reference": "70beeb798069ec79a9bc357055a15e02d6305e5b",
                 "shasum": ""
             },
             "require": {
@@ -679,10 +739,10 @@
                 "bootstrap"
             ],
             "support": {
-                "source": "https://github.com/dotink/affinity/tree/1.0.5",
+                "source": "https://github.com/dotink/affinity/tree/1.2.0",
                 "issues": "https://github.com/dotink/affinity/issues"
             },
-            "time": "2015-07-05 22:15:23"
+            "time": "2015-11-11 10:01:12"
         },
         {
             "name": "dotink/flourish-collection",
@@ -1005,17 +1065,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-console.git",
-                "reference": "e754bd816a00d28ebf8a62b58bd79ee3ec800f9e"
+                "reference": "f8b579e8fc74be72db90c5177ad42e646ada0cef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-console/zipball/e754bd816a00d28ebf8a62b58bd79ee3ec800f9e",
-                "reference": "e754bd816a00d28ebf8a62b58bd79ee3ec800f9e",
+                "url": "https://api.github.com/repos/dotink/inkwell-console/zipball/f8b579e8fc74be72db90c5177ad42e646ada0cef",
+                "reference": "f8b579e8fc74be72db90c5177ad42e646ada0cef",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
                 "psy/psysh": "^0.5.0"
+            },
+            "require-dev": {
+                "dotink/lab": "^1.1.0"
             },
             "type": "opus-package",
             "extra": {
@@ -1050,7 +1113,7 @@
                 "source": "https://github.com/dotink/inkwell-console/tree/master",
                 "issues": "https://github.com/dotink/inkwell-console/issues"
             },
-            "time": "2015-10-20 10:57:36"
+            "time": "2015-11-13 07:03:49"
         },
         {
             "name": "dotink/inkwell-controller",
@@ -1108,22 +1171,25 @@
         },
         {
             "name": "dotink/inkwell-core",
-            "version": "dev-master",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-core.git",
-                "reference": "188cf64d9a27986002bad8b2b397473b9fcd08f6"
+                "reference": "00782e30c55e1241b1a9c55127822e95cee842b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/188cf64d9a27986002bad8b2b397473b9fcd08f6",
-                "reference": "188cf64d9a27986002bad8b2b397473b9fcd08f6",
+                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/00782e30c55e1241b1a9c55127822e95cee842b3",
+                "reference": "00782e30c55e1241b1a9c55127822e95cee842b3",
                 "shasum": ""
             },
             "require": {
                 "dotink/flourish-core": "^1.0.0",
                 "imarc/opus": "^1.0.0",
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "dotink/lab": "^1.1.0"
             },
             "type": "opus-package",
             "extra": {
@@ -1154,9 +1220,9 @@
                 "mvc"
             ],
             "support": {
-                "source": "https://github.com/dotink/inkwell-core/tree/master"
+                "source": "https://github.com/dotink/inkwell-core/tree/1.0.7"
             },
-            "time": "2015-10-26 16:43:30"
+            "time": "2015-11-13 05:26:40"
         },
         {
             "name": "dotink/inkwell-doctrine",
@@ -2152,16 +2218,16 @@
         },
         {
             "name": "rdlowrey/auryn",
-            "version": "dev-master",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rdlowrey/auryn.git",
-                "reference": "f57eaf665a601dbe061c8b1426d84f58c003e6a8"
+                "reference": "70744560af9fea36f5c7f930b8cadc4586ff1944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/f57eaf665a601dbe061c8b1426d84f58c003e6a8",
-                "reference": "f57eaf665a601dbe061c8b1426d84f58c003e6a8",
+                "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/70744560af9fea36f5c7f930b8cadc4586ff1944",
+                "reference": "70744560af9fea36f5c7f930b8cadc4586ff1944",
                 "shasum": ""
             },
             "require": {
@@ -2209,7 +2275,7 @@
                 "dic",
                 "ioc"
             ],
-            "time": "2015-08-26 16:31:48"
+            "time": "2015-08-12 02:24:20"
         },
         {
             "name": "relay/relay",
@@ -2420,12 +2486,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "3ec47c0bf8bce1a25e02e007c1245405bdadb7a6"
+                "reference": "f83a9f8db1cc29f42edb77c7c77382bf9769953a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/3ec47c0bf8bce1a25e02e007c1245405bdadb7a6",
-                "reference": "3ec47c0bf8bce1a25e02e007c1245405bdadb7a6",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/f83a9f8db1cc29f42edb77c7c77382bf9769953a",
+                "reference": "f83a9f8db1cc29f42edb77c7c77382bf9769953a",
                 "shasum": ""
             },
             "require": {
@@ -2462,7 +2528,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2015-09-22 23:07:40"
+            "time": "2015-11-10 00:40:41"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2564,9 +2630,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rdlowrey/auryn": 20,
-        "dotink/affinity": 20,
-        "dotink/inkwell-core": 20,
         "dotink/flourish-messenger": 20,
         "dotink/inkwell-components": 20,
         "dotink/inkwell-doctrine": 20,
