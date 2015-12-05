@@ -21,6 +21,22 @@
 
 
 		/**
+		 * Get the value of primaryPhoneNumber
+		 *
+		 * @access public
+		 * @return Sandstorm\PhoneNumber The value of primaryPhoneNumber
+		 */
+		public function getPrimaryPhoneNumber()
+		{
+			if ($this->primaryPhoneNumber) {
+				return $this->primaryPhoneNumber;
+			}
+
+			return $this->getPhoneNumbers()->first();
+		}
+
+
+		/**
 		 *
 		 */
 		public function hasInterest(ActionType $action_type)
