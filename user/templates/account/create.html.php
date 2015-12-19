@@ -18,17 +18,17 @@
 
 				<label>
 					E-mail address:
-					<input type="text" name="emailAddress" value="<?= $this('person.emailAddress') ?>" required />
-				</label>
-
-				<label>
-					Postal Code:
-					<input type="text" name="postalCode" value="<?= $this('person.postalCode') ?>" required />
+					<input type="text" name="emailAddress" value="<?= $this('person.emailAddress') ?>" />
 				</label>
 
 				<label>
 					Phone Number:
 					<input type="text" name="phoneNumbers[1][digits]" value="<?= $this('phoneNumber.1.digits') ?>" />
+				</label>
+
+				<label>
+					Postal Code:
+					<input type="text" name="postalCode" value="<?= $this('person.postalCode') ?>" required />
 				</label>
 
 				<?php if (count($this('action_types'))) { ?>
