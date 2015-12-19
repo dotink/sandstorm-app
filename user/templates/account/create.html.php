@@ -18,12 +18,12 @@
 
 				<label>
 					E-mail address:
-					<input type="text" name="emailAddress" value="<?= $this('person.emailAddress') ?>" />
+					<input type="email" name="emailAddress" value="<?= $this('person.emailAddress') ?>" />
 				</label>
 
 				<label>
 					Phone Number:
-					<input type="text" name="phoneNumbers[1][digits]" value="<?= $this('phoneNumber.1.digits') ?>" />
+					<input type="tel" name="phoneNumbers[1][digits]" value="<?= $this('phoneNumber.1.digits') ?>" />
 				</label>
 
 				<label>
