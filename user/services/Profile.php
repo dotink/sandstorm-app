@@ -54,15 +54,16 @@
 			$this->accessor->fill($person, $data);
 			$this->accessor->fill($person, ['person' => $person]);
 
-			if ($this->people->findOneBy(['emailAddress' => $person->getEmailAddress()])) {
+			$email_address  = $person->getEmailAddress();
+			$primary_number = $person->getPhoneNumbers()->first();
+
+			if ($email_address && $this->people->findOneBy(['emailAddress' => $email_address])) {
 				throw new Flourish\ValidationException(
 					'A person with that e-mail already exists, please skip!'
 				);
 			}
 
-			$first_number = $person->getPhoneNumbers()->first();
-
-			if ($first_number && $this->phoneNumbers->findOneBy(['digits' => $first_number->getDigits()])) {
+			if ($primary_number && $this->phoneNumbers->findOneBy(['digits' => $primary_number->getDigits()])) {
 				throw new Flourish\ValidationException(
 					'A person with phone number already exists, please skip!'
 				);
