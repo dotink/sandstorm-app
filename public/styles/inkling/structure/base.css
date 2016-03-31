@@ -4,8 +4,6 @@ body > article > :not(.billboard),
 body > section > :not(.billboard),
 body > footer  > :not(.billboard) {
 	display: block;
-	padding-left: 2rem;
-	padding-right: 2rem;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 70%;

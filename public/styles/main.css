@@ -20,7 +20,7 @@ body > header  > :not(.billboard),
 body > article > :not(.billboard),
 body > section > :not(.billboard),
 body > footer  > :not(.billboard) {
-	max-width: 90%;
+	max-width: 85%;
 }
 
 body > section {
@@ -54,19 +54,20 @@ button {
 	font-size: 1.2rem;
 }
 
-.section .message {
+section .message {
 	position: relative;
+	padding: 2rem 8rem;
 }
 
-.section .message::before {
+section .message::before {
 	position: absolute;
-	right: -4rem;
-	top: -1rem;
+	right: 1rem;
+	top: 1rem;
 	float: none;
 	margin: 0;
 }
 
-.section .message > * {
+section .message > * {
 	margin-left: 0;
 }
 
