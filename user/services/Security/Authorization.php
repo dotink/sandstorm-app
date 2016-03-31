@@ -89,6 +89,16 @@
 					$number->setLoginPhrase(NULL);
 					$this->phoneNumbers->save($number);
 
+					if (preg_match(static::$startPaths, $request->getURI()->getPath())) {
+						$response->setStatusCode(303);
+						$response->headers->set(
+							'Location',
+							$request->getURI()->modify('/dashboard')
+						);
+
+						return $response;
+					}
+
 				} else {
 					unset($_SESSION[static::SESSION_KEY]);
 
@@ -111,13 +121,6 @@
 						'path'  => '/',
 						'query' => array()
 					])
-				);
-
-			} elseif ($number && preg_match(static::$startPaths, $request->getURI()->getPath())) {
-				$response->setStatusCode(303);
-				$response->headers->set(
-					'Location',
-					$request->getURI()->modify('/dashboard')
 				);
 
 			} else {

@@ -45,7 +45,6 @@
 				'allow'        => $allow,
 				'pass'         => $pass
 			]);
-
 		}
 
 
