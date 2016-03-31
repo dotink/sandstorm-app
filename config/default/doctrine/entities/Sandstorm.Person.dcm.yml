@@ -99,6 +99,19 @@ Sandstorm\Person:
             referencedColumnName: id
             onDelete: CASCADE
 
+    languages:
+      targetEntity: Sandstorm\Language
+      joinTable:
+        name: peoples_languages
+        joinColumns:
+          person:
+            referencedColumnName: id
+            onDelete: CASCADE
+        inverseJoinColumns:
+          language:
+            referencedColumnName: id
+            onDelete: CASCADE
+
   oneToOne:
     primaryPhoneNumber:
       targetEntity: Sandstorm\PhoneNumber

@@ -1,0 +1,15 @@
+Sandstorm\Language:
+  type: entity
+  table: languages
+  repositoryClass: Sandstorm\Languages
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: IDENTITY
+
+  fields:
+    name:
+      column: name
+      type: string

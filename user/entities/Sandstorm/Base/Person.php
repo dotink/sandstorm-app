@@ -49,6 +49,12 @@
 
 		/**
 		 * @access protected
+		 * @var ArrayCollection
+		 */
+		protected $languages;
+
+		/**
+		 * @access protected
 		 * @var float
 		 */
 		protected $latitude;
@@ -117,6 +123,7 @@
 			$this->roles = new ArrayCollection();
 			$this->organizations = new ArrayCollection();
 			$this->interests = new ArrayCollection();
+			$this->languages = new ArrayCollection();
 		}
 
 
@@ -201,6 +208,18 @@
 		public function getInterests()
 		{
 			return $this->interests;
+		}
+
+
+		/**
+		 * Get the value of languages
+		 *
+		 * @access public
+		 * @return ArrayCollection The value of languages
+		 */
+		public function getLanguages()
+		{
+			return $this->languages;
 		}
 
 
