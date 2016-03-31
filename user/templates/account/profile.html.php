@@ -18,18 +18,18 @@
 			</label>
 
 			<label>
-				E-mail address:
+				What's a good e-mail address?
 				<input type="text" name="emailAddress" value="<?= $this('person.emailAddress') ?>" required />
 			</label>
 
 			<label>
-				Postal Code:
+				What postal/zip code are you in?
 				<input type="text" name="postalCode" value="<?= $this('person.postalCode') ?>" required />
 			</label>
 
 			<?php if (count($this('action_types'))) { ?>
 				<fieldset>
-					<legend>Select your interests</legend>
+					<legend>As a volunteer, I can...</legend>
 					<input type="hidden" name="interests" value="" />
 					<?php html::per($this('action_types'), $this(function($i, $type) { ?>
 						<label class="option">

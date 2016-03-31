@@ -1,6 +1,7 @@
 <?php
 
 	use IW\HTTP;
+	use ICanBoogie\Inflector;
 
 	return Affinity\Config::create(['providers', 'middleware', 'routes', 'auth'], [
 		'@providers' => [
@@ -14,9 +15,11 @@
 				]
 			],
 
-
 			'mapping' => [
-				'Doctrine\Common\Persistence\ObjectManager' => 'Doctrine\ORM\EntityManager'
+				'Doctrine\Common\Persistence\ObjectManager' => 'Doctrine\ORM\EntityManager',
+				'ICanBoogie\Inflector' => function() {
+					return Inflector::get(Inflector::DEFAULT_LOCALE);
+				}
 			]
 		],
 
@@ -50,15 +53,15 @@
 			//
 
 			'links' => [
-				'/'                          => 'Sandstorm\AccountController::enter',
-				'/login'                     => 'Sandstorm\AccountController::login',
-				'/profile'                   => 'Sandstorm\AccountController::profile',
-				'/create'                    => 'Sandstorm\AccountController::create',
-				'/dashboard'                 => 'Sandstorm\DashboardController::main',
-				'/user/[$:method]/'          => 'Sandstorm\UserController::[lc:method]',
-				'/[$:class]/'                => 'Sandstorm\[uc:class]Controller::manage',
-				'/[$:class]/[+:id]-[!:slug]' => 'Sandstorm\[uc:class]Controller::select',
-				'/[(.*):path]'               => 'Sandstorm\MainController::page'
+				'/'                                => 'Sandstorm\AccountController::enter',
+				'/login'                           => 'Sandstorm\AccountController::login',
+				'/profile'                         => 'Sandstorm\AccountController::profile',
+				'/create'                          => 'Sandstorm\AccountController::create',
+				'/dashboard'                       => 'Sandstorm\DashboardController::main',
+				'/user/[$:method]/'                => 'Sandstorm\UserController::[lc:method]',
+				'/[$:class]/'                      => 'Sandstorm\[uc:class]Controller::manage',
+				'/[$:class]/[+:id]-[!:slug]'       => 'Sandstorm\[uc:class]Controller::select',
+				'/[(.*):path]'                     => 'Sandstorm\MainController::page'
 			],
 
 			//
@@ -85,7 +88,7 @@
 
 			'redirects' => [
 				HTTP\REDIRECT_PERMANENT => [
-					'/user' => '/dashboard'
+					'/user'  => '/dashboard',
 				]
 			]
 		],
@@ -100,11 +103,10 @@
 			'permissions' => [
 				'User' => [
 					'Sandstorm\Organization' => ['manage'],
-					'Sandstorm\Action'       => ['manage']
 				],
 
 				'Admin' => [
-
+					'Sandstorm\Action' => ['manage'],
 				]
 			]
 		],

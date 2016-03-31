@@ -24,7 +24,7 @@
 		"dotink/affinity": "~1.2.0",
 		"dotink/inkwell-core": "~1.0.0",
 		"vlucas/phpdotenv": "~2.0.0",
-		"filp/whoops": "~1.1.0",
+		"filp/whoops": "~2.1.0",
 		"dotink/flourish-messenger": "dev-master",
 		"dotink/inkwell-components": "dev-master",
 		"dotink/inkwell-doctrine": "dev-master",
@@ -41,5 +41,8 @@
 		"opus": {
 			"enabled": true
 		}
+	},
+	"config": {
+		"secure-http": false
 	}
 }

@@ -58,12 +58,12 @@
 		 */
 		public function prepare($action, $context = array())
 		{
-			parent::prepare($action, $context);
-
 			$this->view->set([
 				'auth'      => $this->auth,
 				'messenger' => $this->messenger
 			]);
+
+			return parent::prepare($action, $context);
 		}
 	}
 }
