@@ -31,8 +31,11 @@
 		"imarc/tenet": "~2.0@dev",
 		"dotink/inkwell-auth": "dev-master",
 		"dotink/inkwell-relay": "dev-master",
+		"firebase/php-jwt": "^2.0.0",
 		"twilio/sdk": "dev-master",
-		"cebe/markdown": "~1.1.0"
+		"swiftmailer/swiftmailer": "^5.0.0",
+		"cebe/markdown": "~1.1.0",
+		"icanboogie/inflector": "^1.4"
 	},
 	"autoload": {
 		"classmap": ["user/"]

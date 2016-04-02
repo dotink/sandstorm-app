@@ -52,7 +52,7 @@
 		/**
 		 *
 		 */
-		static protected $publicPaths = '#^(/|/login|/create)$#';
+		static protected $publicPaths = '#^(/|/login|/create|/recover)$#';
 
 		/**
 		 *

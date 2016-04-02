@@ -4,6 +4,7 @@
 	use ICanBoogie\Inflector;
 
 	return Affinity\Config::create(['providers', 'middleware', 'routes', 'auth'], [
+
 		'@providers' => [
 			//
 			//
@@ -55,6 +56,7 @@
 			'links' => [
 				'/'                                => 'Sandstorm\AccountController::enter',
 				'/login'                           => 'Sandstorm\AccountController::login',
+				'/recover'                         => 'Sandstorm\AccountController::recover',
 				'/profile'                         => 'Sandstorm\AccountController::profile',
 				'/create'                          => 'Sandstorm\AccountController::create',
 				'/dashboard'                       => 'Sandstorm\DashboardController::main',

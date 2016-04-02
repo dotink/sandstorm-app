@@ -4,17 +4,21 @@
 	use Dotink\Flourish;
 
 	use Sandstorm\Security\Authorization;
+	use Sandstorm\Security\Recovery;
 
 	/**
 	 * The account controller is responsible for entry points for account access and settings
 	 */
 	class AccountController extends Controller
 	{
-		const MSG_NO_NUMBER = 'You must enter a telephone number to begin.';
-		const MSG_INIT      = 'You should receive a text with your passphrase momentarily.';
-		const MSG_PROBLEM   = 'There was a probem trying to send the passphrase.  Try again later.';
-		const MSG_INCORRECT = 'The passphrase you entered was incorrect, please try again.';
-		const MSG_THANKS    = 'Thanks, make sure to come back if you need to update your info.';
+		const MSG_NO_NUMBER     = 'You must enter a telephone number to begin.';
+		const MSG_INIT          = 'You should receive a text with your passphrase momentarily.';
+		const MSG_PROBLEM       = 'There was a probem trying to send the passphrase.  Try again later.';
+		const MSG_INCORRECT     = 'The passphrase you entered was incorrect, please try again.';
+		const MSG_THANKS        = 'Thanks, make sure to come back if you need to update your info.';
+		const MSG_EMAIL_INVALID = 'That e-mail does not appear to be a valid e-mail, please try again.';
+		const MSG_EMAIL_MISSING = 'We could not find that e-mail address in the system, please try again.';
+		const MSG_EMAIL_SENT    = 'Please check your e-mail for an account recovery link.';
 
 
 		/**
@@ -138,6 +142,40 @@
 			return $this->view->load('account/profile.html', [
 				'person'       => $profile->getPerson(),
 				'action_types' => $profile->getActionTypes()
+			]);
+		}
+
+
+		/**
+		 *
+		 */
+		public function recover(Profile $profile, Recovery $recovery)
+		{
+			$token = $this->request->params->get('token');
+			$email = $this->request->params->get('email');
+
+			if (!$token) {
+				if ($this->request->checkMethod(HTTP\POST)) {
+					try {
+						$recovery->sendEmail($email);
+						$this->messenger->record('success', self::MSG_EMAIL_SENT);
+
+					} catch (Flourish\ValidationException $e) {
+						$this->messenger->record('error', self::MSG_EMAIL_INVALID);
+
+					} catch (Flourish\NotFoundException $e) {
+						$this->messenger->record('error', self::MSG_EMAIL_MISSING);
+
+					}
+				}
+
+			} elseif ($this->request->checkMethod(HTTP\POST)) {
+
+			}
+
+			return $this->view->load('account/recover.html', [
+				'token' => $token,
+				'email' => $email
 			]);
 		}
 	}
