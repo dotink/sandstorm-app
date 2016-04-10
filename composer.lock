@@ -1170,16 +1170,16 @@
         },
         {
             "name": "dotink/inkwell-core",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dotink/inkwell-core.git",
-                "reference": "00782e30c55e1241b1a9c55127822e95cee842b3"
+                "reference": "d1d30f5953b3070554f904d9ba1ded836116385e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/00782e30c55e1241b1a9c55127822e95cee842b3",
-                "reference": "00782e30c55e1241b1a9c55127822e95cee842b3",
+                "url": "https://api.github.com/repos/dotink/inkwell-core/zipball/d1d30f5953b3070554f904d9ba1ded836116385e",
+                "reference": "d1d30f5953b3070554f904d9ba1ded836116385e",
                 "shasum": ""
             },
             "require": {
@@ -1219,9 +1219,9 @@
                 "mvc"
             ],
             "support": {
-                "source": "https://github.com/dotink/inkwell-core/tree/1.0.7"
+                "source": "https://github.com/dotink/inkwell-core/tree/master"
             },
-            "time": "2015-11-13 05:26:40"
+            "time": "2016-04-10 03:05:26"
         },
         {
             "name": "dotink/inkwell-doctrine",
@@ -1655,16 +1655,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.0",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f"
+                "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/8da9523f07c62d56fe1cf36f8ae29b333afc181f",
-                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/d13505b240a6f580bc75ba591da30299d6cb0eec",
+                "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec",
                 "shasum": ""
             },
             "require": {
@@ -1711,7 +1711,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-03-13 10:22:39"
+            "time": "2016-04-07 06:16:25"
         },
         {
             "name": "firebase/php-jwt",
