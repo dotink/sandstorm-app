@@ -3,7 +3,7 @@
 	use IW\HTTP;
 	use ICanBoogie\Inflector;
 
-	return Affinity\Config::create(['providers', 'middleware', 'routes', 'auth'], [
+	return Affinity\Config::create(['providers', 'middleware', 'routes', 'auth', 'firewall'], [
 
 		'@providers' => [
 			//
@@ -32,6 +32,7 @@
 
 			'providers' => [
 				'Sandstorm\Security\Authorization',
+				'Sandstorm\Security\Firewall',
 				'Inkwell\Doctrine\Middleware\Flush',
 			]
 		],
@@ -112,4 +113,17 @@
 				]
 			]
 		],
+
+		'@firewall' => [
+			'public' => [
+				'/',
+				'/login',
+				'/create',
+				'/recover'
+			],
+
+			'private' => [
+				'/admin/(.*)' => ['Admin']
+			]
+		]
 	]);

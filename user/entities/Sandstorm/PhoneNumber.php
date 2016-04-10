@@ -44,7 +44,7 @@
 		public function getRoles()
 		{
 			if (!$this->getPerson()) {
-				return ['anonymous user'];
+				return ['Anonymous User'];
 			}
 
 			return array_map(function($role) {

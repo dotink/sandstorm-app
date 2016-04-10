@@ -107,7 +107,6 @@
 
 					if ($profile->exists()) {
 						$this->router->redirect('/dashboard');
-
 					} else {
 						$this->router->redirect('/profile');
 					}

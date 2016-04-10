@@ -49,20 +49,6 @@
 			'makes', 'jumpy', 'jimmy', 'junky', 'juicy', 'wimpy', 'kicks', 'major', 'puppy'
 		];
 
-		/**
-		 *
-		 */
-		static protected $publicPaths = '#^(/|/login|/create|/recover)$#';
-
-		/**
-		 *
-		 */
-		static protected $registrationPath = '/profile';
-
-		/**
-		 *
-		 */
-		static protected $startPaths = '#^(/|/login)$#';
 
 		/**
 		 *
@@ -87,48 +73,14 @@
 
 				if ($number) {
 					$number->setLoginPhrase(NULL);
-					$this->phoneNumbers->save($number);
-
-					if (preg_match(static::$startPaths, $request->getURI()->getPath())) {
-						$response->setStatusCode(303);
-						$response->headers->set(
-							'Location',
-							$request->getURI()->modify('/dashboard')
-						);
-
-						return $response;
-					}
-
 				} else {
 					unset($_SESSION[static::SESSION_KEY]);
-
 				}
 			}
 
 			$this->app['auth.init']($number ?: new Auth\AnonymousUser());
 
-			if (!$this->checkAccess($request)) {
-
-				//
-				// TODO: Flash message that the account no longer exists and/or
-				// page is not accessible
-				//
-
-				$response->setStatusCode(303);
-				$response->headers->set(
-					'Location',
-					$request->getURI()->modify([
-						'path'  => '/',
-						'query' => array()
-					])
-				);
-
-			} else {
-				$response = $next($request, $response);
-
-			}
-
-			return $response;
+			return $next($request, $response);
 		}
 
 
@@ -216,38 +168,6 @@
 			}
 
 			return implode(' ', $phrase);
-		}
-
-
-		/**
-		 * Checks whether or not a request is accessible for the authed entity
-		 *
-		 * @access protected
-		 * @param Request $request The request to check
-		 * @return boolean TRUE if the current request is accessible, FALSE otherwise
-		 */
-		protected function checkAccess($request)
-		{
-			if (preg_match(static::$publicPaths, $request->getURI()->getPath())) {
-				return TRUE; // The URI is public
-			}
-
-			if ($this->app['auth']->entity instanceof Auth\AnonymousUser) {
-				return FALSE; // The person is not logged in
-			}
-
-			if ($request->getURI()->getPath() == static::$registrationPath) {
-				return TRUE;  // The person is logged in, and is accessing the registration page
-			}
-
-			if (!$this->app['auth']->entity->getPerson()) {
-				return FALSE; // The person is logged in, but has not completed profile
-			}
-
-			//
-			// TODO: Check configured role and role based access
-			//
-			return TRUE;
 		}
 	}
 }
